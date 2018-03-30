@@ -33,7 +33,7 @@ class WeekSpecials extends Module
             if(Tools::isSubmit('submit_weekspecials_content'))
             {
                 $menu=Tools::getAllValues();
-                $menu=array_splice($menu,0,6); //FIX ME
+                $menu=array_splice($menu,0,6); //FIXME:
                 $file=fopen(__DIR__.'/export.json','w+');
                 fwrite($file, json_encode($menu));
                 fclose($file);
@@ -49,7 +49,7 @@ class WeekSpecials extends Module
             if($arg=='date') // Pour l'attribution de la valeur date, il faut la formater au format francophone d'abord, puis l'attribuer à Smarty
             {
                 $dates=$output[$arg];
-                foreach($dates as $date){ // FIX ME
+                foreach($dates as $date){ // TODO:
                     $date=explode('-',$date);
                     $datesFormatees[]=$date[2].'/'.$date[1].'/'.$date[0];
                 }
@@ -67,35 +67,27 @@ class WeekSpecials extends Module
         if(Tools::isSubmit('submit_weekspecials_config'))
         {
             $enable_front=Tools::getValue('enable_front');
-            $template=Tools::getValue('template');
+            $enable_template=Tools::getValue('template');
             Configuration::updateValue('WEEKS_ENABLE', $enable_front);
-            Configuration::updateValue('WEEKS_TEMPLATE', $template);
+            Configuration::updateValue('WEEKS_TEMPLATE', $enable_template);
             $this->context->smarty->assign('confirmation','true');
         }
     }
 
-        // Gestion template
-    public function processTemplate()
-    {
-        $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
-        $file=file_get_contents($path);
-        $this->context->smarty->assign('tpl',$file);
-    }
-
-        // Submit template modifications
+        // Submit template modifications && display .tpl content in textarea
     public function assignTemplate()
     {
+        $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
+        $tpl=file_get_contents($path);
         if(Tools::isSubmit('submit_weekspecials_template'))
         {
             $tpl=Tools::getValue('template');
-            $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
             $file=fopen($path, 'w+');
             fwrite($file,$tpl);
             fclose($file);
         } 
         elseif(Tools::isSubmit('submit_weekspecials_reset'))
         {
-            $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
             $tpl=file_get_contents(_PS_MODULE_DIR_.'weekspecials/displayHomeTab.bak.tpl');
             $file=fopen($path,'w+');
             fwrite($file, $tpl);
@@ -109,15 +101,14 @@ class WeekSpecials extends Module
     {
         $this->processConfiguration();
         $this->processForms();
-        $this->processTemplate();
         $this->assignTemplate();
         $this->hookDisplayHomeTab();
         $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
         $this->context->smarty->assign('path',$path);
         $html_form=$this->renderForm();
         $this->context->smarty->assign('config',$html_form);
-        $template=Configuration::get('WEEKS_TEMPLATE');
-        $this->context->smarty->assign('template', $template);
+        $enable_template=Configuration::get('WEEKS_TEMPLATE');
+        $this->context->smarty->assign('enable_template', $enable_template);
 
         return $this->display(__FILE__, 'getContent.tpl');
     }
