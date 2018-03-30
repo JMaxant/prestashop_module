@@ -1,20 +1,23 @@
-
 {* Affichage confirmation de soumission formulaires *}
 {if isset($confirmation)}
 <div class="alert alert-success">
     <p>La configuration a bien été sauvegardée.</p>
 </div>
 {/if}
+
+{* CONFIGURATION FORM *}
 {$config}
+{* /CONFIGURATION FORM *}
+
 {* Formulaire affichage front *}
 <form method="POST" action="" class="defaultForm form-horizontal">
     <div class="panel">
 
         <div class="panel-heading">
-            <h2><i class="icon-calendar"></i>&nbsp;Saisissez ici les plats de la semaine</h2>
+            <h2><i class="icon-calendar"></i>&nbsp;<a href="#sw_main_content" data-toggle="collapse">Saisissez ici les plats de la semaine</a></h2>
         </div>
         
-        <div class="panel-body">
+        <div id="sw_main_content" class="panel-body collapse in">
             <div class="form-group">
                 <label class="label control-label col-sm-3">Saisissez ici la date de votre choix</label>
                 <div class="col-sm-9">
@@ -43,8 +46,8 @@
                 <div class="col-sm-4">
                     <label>Plat du jour</label>
                     <textarea name="monday[2]"></textarea>
-                    {* <label>Vegetarian dish</label> *}
-                    {* <input type="checkbox" name="monday[2]option[0]" value="vg" />
+                    {* <label>Vegetarian dish</label>
+                    <input type="checkbox" name="monday[2]option[0]" value="vg" />
                     <label>Porkfree dish</label>
                     <input type="checkbox" name="monday[2]option[1]" value="hallal" /> *}
                 </div>
@@ -52,15 +55,15 @@
             <h3><a href="#tuesday" data-toggle="collapse">Tuesday <span class="icon-arrow-down"></span></a></h3>
             <div id="tuesday" class="form-group collapse">
                 <div class="col-sm-4">
-                    <label>Plat du jour</label>
-                    <textarea name="tuesday[0]"></textarea> *}
+                    <label>Entrée du jour</label>
+                    <textarea name="tuesday[0]"></textarea>
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
                     <label>Porkfree dish</label>
                     <input type="checkbox" name="option[]" value="hallal" /> *}
                 </div>
                 <div class="col-sm-4">
-                    <label>Salade du jour</label>                
+                    <label>Plat du jour</label>                
                     <textarea name="tuesday[1]"></textarea>
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
@@ -68,7 +71,7 @@
                     <input type="checkbox" name="option[]" value="hallal" /> *}
                 </div>
                 <div class="col-sm-4">
-                    <label>Dessert du jour</label>
+                    <label>Plat du jour</label>
                     <textarea name="tuesday[2]"></textarea>
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
@@ -79,7 +82,7 @@
             <h3><a href="#wednesday" data-toggle="collapse" > Wednesday <span class="icon-arrow-down"></span></a></h3>
             <div id="wednesday" class="form-group collapse">
                 <div class="col-sm-4">
-                    <label>Plat du jour</label>
+                    <label>Entrée du jour</label>
                     <textarea name="wednesday[0]"></textarea>
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
@@ -87,7 +90,7 @@
                     <input type="checkbox" name="option[]" value="hallal" /> *}
                 </div>
                 <div class="col-sm-4">
-                    <label>Salade du jour</label>                
+                    <label>Plat du jour</label>                
                     <textarea name="wednesday[1]"></textarea>
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
@@ -95,7 +98,7 @@
                     <input type="checkbox" name="option[]" value="hallal" /> *}
                 </div>
                 <div class="col-sm-4">
-                    <label>Dessert du jour</label>
+                    <label>Plat du jour</label>
                     <textarea name="wednesday[2]"></textarea>
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
@@ -106,7 +109,7 @@
             <h3><a href="#thursday" data-toggle="collapse">Thursday <span class="icon-arrow-down"></span></a></h3>
             <div id="thursday"  class="form-group collapse">
                 <div class="col-sm-4">
-                    <label>Plat du jour</label>
+                    <label>Entrée du jour</label>
                     <textarea name="thursday[0]"></textarea>
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
@@ -114,7 +117,7 @@
                     <input type="checkbox" name="option[]" value="hallal" /> *}
                 </div>
                 <div class="col-sm-4">
-                    <label>Salade du jour</label>                
+                    <label>Plat du jour</label>                
                     <textarea name="thursday[1]"></textarea> 
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
@@ -122,7 +125,7 @@
                     <input type="checkbox" name="option[]" value="hallal" /> *}
                 </div>
                 <div class="col-sm-4">
-                    <label>Dessert du jour</label>
+                    <label>Plat du jour</label>
                     <textarea name="thursday[2]"></textarea>
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
@@ -133,7 +136,7 @@
            <h3><a href="#friday" data-toggle="collapse">Friday<span class="icon-arrow-down"></span></a></h3>
            <div id="friday" class="form-group collapse">
                 <div class="col-sm-4">
-                    <label>Plat du jour</label>
+                    <label>Entrée du jour</label>
                     <textarea name="friday[0]"></textarea>
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
@@ -141,15 +144,15 @@
                     <input type="checkbox" name="option[]" value="hallal" /> *}
                 </div>
                 <div class="col-sm-4">
-                    <label>Salade du jour</label>                
+                    <label>Plat du jour</label>                
                     <textarea name="friday[1]"></textarea>
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
                     <label>Porkfree dish</label>
                     <input type="checkbox" name="option[]" value="hallal" /> *}
-                /div>
+                </div>
                 <div class="col-sm-4">
-                    <label>Dessert du jour</label>
+                    <label>Plat du jour</label>
                     <textarea name="friday[2]"></textarea>
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
@@ -170,10 +173,10 @@
 {* Affichage preview *}
     <section class="panel">
             <div class="panel-heading">
-                <h2><i class="icon-cogs"></i><a href="#preview" data-toggle="collapse">&nbsp;Preview<span class="icon-arrow-down"></span></a></h2>
+                <h2><i class="icon-cogs"></i><a href="#sw_content_preview" data-toggle="collapse">&nbsp;Preview<span class="icon-arrow-down"></span></a></h2>
             </div>
             
-            <div id="preview" class="panel-body collapse in">
+            <div id="sw_content_preview" class="panel-body collapse in">
                 {include file=$path}
             </div>
 
@@ -182,14 +185,14 @@
     </section>
 
 {* Espace de customisation template hook front *}
-{if $template eq 1}
+{if $enable_template eq 1}
     <section class="panel">
         <form method="POST" action="" class="defaultForm form-horizontal">
             <div class="panel-heading">
-                <h2><i class="icon-cogs"></i><a href="#template" data-toggle="collapse">&nbsp;template<span class="icon-arrow-down"></span></a></h2>
+                <h2><i class="icon-cogs"></i><a href="#sw_content_tpl" data-toggle="collapse">&nbsp;template<span class="icon-arrow-down"></span></a></h2>
             </div>
 
-            <div class="panel-body collapse in">
+            <div id="sw_content_tpl" class="panel-body collapse in">
                 <textarea id="template" name="template" value="">
                     {$tpl}
                 </textarea>
@@ -206,3 +209,4 @@
         </form>
     </section>
 {/if}
+{debug}
