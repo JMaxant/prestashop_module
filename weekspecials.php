@@ -46,10 +46,10 @@ class WeekSpecials extends Module
         $output=json_decode($output, true);
         $args=array_keys($output); // on récupère les clés du json converti en tableau, pour s'en servir en argument sur la boucle qui suit
         foreach($args as $arg){
-            if($arg=='date') // Pour l'attribution de la valeur date, il faut la formater au format francophone d'abord, puis l'attribuer à Smarty;
+            if($arg=='date') // Pour l'attribution de la valeur date, il faut la formater au format francophone d'abord, puis l'attribuer à Smarty
             {
                 $dates=$output[$arg];
-                foreach($dates as $date){
+                foreach($dates as $date){ // FIX ME
                     $date=explode('-',$date);
                     $datesFormatees[]=$date[2].'/'.$date[1].'/'.$date[0];
                 }
@@ -67,31 +67,125 @@ class WeekSpecials extends Module
         if(Tools::isSubmit('submit_weekspecials_config'))
         {
             $enable_front=Tools::getValue('enable_front');
-            $preview=Tools::getValue('preview');
+            $template=Tools::getValue('template');
             Configuration::updateValue('WEEKS_ENABLE', $enable_front);
-            Configuration::updateValue('WEEKS_PREVIEW', $preview);
+            Configuration::updateValue('WEEKS_TEMPLATE', $template);
             $this->context->smarty->assign('confirmation','true');
         }
     }
-        // Récupération des infos de configuration
-    public function assignConfiguration()
+
+        // Gestion template
+    public function processTemplate()
     {
-        $enable_front=Configuration::get('WEEKS_ENABLE');
-        $preview=Configuration::get('WEEKS_PREVIEW');
-        $this->context->smarty->assign('enable_front', $enable_front);
-        $this->context->smarty->assign('preview', $preview);
+        $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
+        $file=file_get_contents($path);
+        $this->context->smarty->assign('tpl',$file);
     }
+
+        // Submit template modifications
+    public function assignTemplate()
+    {
+        if(Tools::isSubmit('submit_weekspecials_template'))
+        {
+            $tpl=Tools::getValue('template');
+            $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
+            $file=fopen($path, 'w+');
+            fwrite($file,$tpl);
+            fclose($file);
+        } 
+        elseif(Tools::isSubmit('submit_weekspecials_reset'))
+        {
+            $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
+            $tpl=file_get_contents(_PS_MODULE_DIR_.'weekspecials/displayHomeTab.bak.tpl');
+            $file=fopen($path,'w+');
+            fwrite($file, $tpl);
+            fclose($file);            
+        }
+        $this->context->smarty->assign('tpl',$tpl);
+    }
+
         // Affichage back
     public function getContent()
     {
         $this->processConfiguration();
         $this->processForms();
-        $this->assignConfiguration();
+        $this->processTemplate();
+        $this->assignTemplate();
         $this->hookDisplayHomeTab();
         $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
-        var_dump($path);
         $this->context->smarty->assign('path',$path);
+        $html_form=$this->renderForm();
+        $this->context->smarty->assign('config',$html_form);
+        $template=Configuration::get('WEEKS_TEMPLATE');
+        $this->context->smarty->assign('template', $template);
+
         return $this->display(__FILE__, 'getContent.tpl');
+    }
+
+        // handles back office configuration Form
+    public function renderForm()
+    {
+        $fields_form=array(
+            'form'=>array(
+                'legend'=>array(
+                    'title'=>$this->l('Weekly specials'),
+                    'icon' =>'icon-envelope'
+                ),
+                'input'=>array(
+                    array(
+                        'type'=>'switch',
+                        'label'=>$this->l('Enable Module'),
+                        'name'=>'enable_front',
+                        'desc'=>$this->l('Displays module in the front-office'),
+                        'values'=>array(
+                            array(
+                                'id'=>'enable_1',
+                                'value'=> 1,
+                                'label'=>$this->l('Enabled')
+                            ), array(
+                                'id'=> 'enable_0',
+                                'value'=>0,
+                                'label'=>$this->l('Disabled')
+                            )
+                        ),
+                    ), array(
+                        'type'=>'switch',
+                        'label'=>$this->l('Enable Template Editor'),
+                        'name'=>'template',
+                        'desc'=>$this->l('Enables edition of the template'),
+                        'values'=>array(
+                            array(
+                                'id'=>'template_1',
+                                'value'=>1,
+                                'label'=>$this->l('Enabled')
+                            ), array(
+                                'id'=>'template_0',
+                                'value'=>0,
+                                'label'=>$this->l('Disabled')
+                            )
+                        )
+                    ),
+                ),
+                'submit'=>array(
+                    'title'=>$this->l('Save'),
+                )
+            ),
+        );
+        $helper=new HelperForm();
+        $helper->table='weekspecials_config';
+        $helper->default_form_language=(int)Configuration::get('PS_LANG_DEFAULT');
+        $helper->allow_employee_form_lang=(int)Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG');
+        $helper->submit_action='submit_weekspecials_config';
+        $helper->currentIndex=$this->context->link->getAdminLink('AdminModules',false).'&configure='.$this->name.'&tab_module='.$this->tab.'$module_name='.$this->name;
+        $helper->token=Tools::getAdminTokenLite('AdminModules');
+        $helper->tpl_vars=array(
+            'fields_value'=>array(
+                'enable_front'=>Tools::getValue('enable_front', Configuration::get('WEEKS_ENABLE')),
+                'template'=>Tools::getValue('template', Configuration::get('WEEKS_TEMPLATE')),
+            ),
+            'languages'=>$this->context->controller->getLanguages()
+        );
+        return $helper->generateForm(array($fields_form));
     }
 }
 
