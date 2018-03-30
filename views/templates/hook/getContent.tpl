@@ -5,47 +5,7 @@
     <p>La configuration a bien été sauvegardée.</p>
 </div>
 {/if}
-{*Formulaire configuration*}
-<form method="POST" action="" class="defaultForm form-horizontal">
-    <div class="panel">
-
-        <div class="panel-heading">
-            <h2><i class="icon-cogs"></i>&nbsp;Espace de configuration Menu de la Semaine</h2>
-        </div> 
-
-        <div class="form-wrapper">
-            <div class="form-group">
-                <label class="control-label col-sm-3">Activer/Désactiver l'affichage du menu</label>
-                <div class="col-sm-9">
-                    <img src="../img/admin/enabled.gif" alt="" />
-                    <input type="radio" id="enable_1" name="enable_front" value="1"{if $enable_front eq 1} checked{/if} />
-                    <label for="enable_1">Activer</label>
-                    <img src="../img/admin/disabled.gif" alt="" />
-                    <input type="radio" id="enable_0" name="enable_front" value="0"{if $enable_front ne 1} checked{/if} />
-                    <label for="enable_0">Désactiver</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-3">Modification du template d'affichage</label>
-                <div class="col-sm-9">
-                    <img src="../img/admin/enabled.gif" alt="" />
-                    <input type="radio" id="preview_1" name="preview" value="1"{if $preview eq 1} checked{/if} />
-                    <label for="preview_1">Activer</label>
-                    <img src="../img/admin/disabled.gif" alt="" />
-                    <input type="radio" id="preview_0" name="preview" value="0"{if $preview ne 1} checked{/if} />
-                    <label for="preview_0">Désactiver</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel-footer">
-            <button class="btn btn-default pull-right" name="submit_weekspecials_config" value="1" type="submit">
-                <i class="process-icon-save"></i>Enregistrer
-            </button>
-        </div>
-    </div>
-</form>
-
+{$config}
 {* Formulaire affichage front *}
 <form method="POST" action="" class="defaultForm form-horizontal">
     <div class="panel">
@@ -63,7 +23,7 @@
                 </div>
             </div>
             <h3><a href="#monday" data-toggle="collapse">Monday <span class="icon-arrow-down"></span></a></h3>
-            <div id="monday" class="form-group collapse">
+            <div id="monday" class="form-group collapse in">
                 <div class="col-sm-4">
                     <label>Entrée du jour</label>
                     <textarea name="monday[0]"></textarea>
@@ -93,7 +53,7 @@
             <div id="tuesday" class="form-group collapse">
                 <div class="col-sm-4">
                     <label>Plat du jour</label>
-                    <textarea name="tuesday[0]"></textarea>
+                    <textarea name="tuesday[0]"></textarea> *}
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
                     <label>Porkfree dish</label>
@@ -155,7 +115,7 @@
                 </div>
                 <div class="col-sm-4">
                     <label>Salade du jour</label>                
-                    <textarea name="thursday[1]"></textarea>
+                    <textarea name="thursday[1]"></textarea> 
                     {* <label>Vegetarian dish</label>
                     <input type="checkbox" name="option[]" value="vg" />
                     <label>Porkfree dish</label>
@@ -168,7 +128,7 @@
                     <input type="checkbox" name="option[]" value="vg" />
                     <label>Porkfree dish</label>
                     <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
+                 </div>
             </div>
            <h3><a href="#friday" data-toggle="collapse">Friday<span class="icon-arrow-down"></span></a></h3>
            <div id="friday" class="form-group collapse">
@@ -187,7 +147,7 @@
                     <input type="checkbox" name="option[]" value="vg" />
                     <label>Porkfree dish</label>
                     <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
+                /div>
                 <div class="col-sm-4">
                     <label>Dessert du jour</label>
                     <textarea name="friday[2]"></textarea>
@@ -208,31 +168,41 @@
 </form>
 
 {* Affichage preview *}
-<section class="panel">
-        <div class="panel-heading">
-            <h2><i class="icon-cogs"></i><a href="#preview" data-toggle="collapse">&nbsp;Preview<span class="icon-arrow-down"></span></a></h2>
-        </div>
-        
-        <div id="preview" class="panel-body collapse">
-            {include file=$path}
-        </div>
+    <section class="panel">
+            <div class="panel-heading">
+                <h2><i class="icon-cogs"></i><a href="#preview" data-toggle="collapse">&nbsp;Preview<span class="icon-arrow-down"></span></a></h2>
+            </div>
+            
+            <div id="preview" class="panel-body collapse in">
+                {include file=$path}
+            </div>
 
-        <div class="panel-footer">
-        </div>
-</section>
+            <div class="panel-footer">
+            </div>
+    </section>
 
 {* Espace de customisation template hook front *}
-<section class="panel">
-    <div class="panel-heading">
-        <h2><i class="icon-cogs"></i><a href="#wysiwyg" data-toggle="collapse">&nbsp;WYSIWYG<span class="icon-arrow-down"></span></a></h2>
-    </div>
+{if $template eq 1}
+    <section class="panel">
+        <form method="POST" action="" class="defaultForm form-horizontal">
+            <div class="panel-heading">
+                <h2><i class="icon-cogs"></i><a href="#template" data-toggle="collapse">&nbsp;template<span class="icon-arrow-down"></span></a></h2>
+            </div>
 
-    <div id="wysiwyg" class="panel-body collapse">
-        <textarea>
-        WYSIWYG
-        </textarea>
-    </div>
+            <div class="panel-body collapse in">
+                <textarea id="template" name="template" value="">
+                    {$tpl}
+                </textarea>
+            </div>
 
-    <div class="panel-footer">
-    </div>
-</section>
+            <div class="panel-footer">
+                <button class="btn btn-default pull-right" name="submit_weekspecials_template" value="1" type="submit">
+                    <i class="process-icon-save"></i>Enregistrer
+                </button>
+                <button class="btn btn-default pull-right" name="submit_weekspecials_reset" value="1" type="submit">
+                    <i class="process-icon-refresh"></i>Remettre par défaut
+                </button>
+            </div>
+        </form>
+    </section>
+{/if}
