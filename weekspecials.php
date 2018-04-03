@@ -90,10 +90,15 @@ class WeekSpecials extends Module
     public function hookDisplayHomeTab()
     {   
         $req=Db::getInstance()->getRow('SELECT `array_weekspecials_menu` FROM `'._DB_PREFIX_.'weekspecials` ORDER BY `id_weekspecials_menu` DESC');
-        $menu=unserialize($req['array_weekspecials_menu']);
+        $output=unserialize($req['array_weekspecials_menu']);
+        $args=array_keys($output);
+        foreach($args as $arg){
+            $$arg=$output[$arg];
+        }
 
+        var_dump($date);
+        var_dump($mon);
         // die;
-        // $output=
         // $output=file_get_contents(__DIR__.'/export.json');
         // $output=json_decode($output, true);
         // $args=array_keys($output); // on récupère les clés du json converti en tableau, pour s'en servir en argument sur la boucle qui suit
