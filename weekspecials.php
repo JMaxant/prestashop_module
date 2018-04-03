@@ -1,5 +1,11 @@
 <?php
 
+/*
+TODO: controller front
+TODO: function dateformat
+TODO: Allergènes
+
+*/
 class WeekSpecials extends Module
 {
     // constructeur
@@ -17,27 +23,68 @@ class WeekSpecials extends Module
         parent::__construct();
     }
 
-    //Install
+    // Install
     public function install()
     {
-        parent::install();
-        $this->registerHook('displayHomeTab');
+        if(!parent::install()){
+            return false;
+        }
+        
+        $sql_file=dirname(__FILE__).'/install/install.sql';
+        if(!$this->loadSQLFile($sql_file)){
+            return false;
+        }
+        
+        if(!$this->registerHook('displayHomeTab')){
+            return false;
+        }
+        
+        return true;
+    }
+    
+    // Uninstall
+    public function uninstall()
+    {
+        if(!parent::uninstall()){
+            return false;
+        }
+        $sql_file=dirname(__FILE__).'/install/uninstall.sql';
+        if(!$this->loadSQLFile($sql_file)){
+            return false;
+        }
 
         return true;
     }
     
+    public function loadSQLFile($sql_file)
+    {
+        //get contents of the SQL File
+        $sql_content=file_get_contents($sql_file);
+
+        // Replaces PREFIX with proper PS db prefix, and stores the queries in an array
+        $sql_content=str_replace('PREFIX', _DB_PREFIX_, $sql_content);
+        $sql_queries=preg_split("/;\s*[\r\n]+/", $sql_content);
+
+        $result=true;
+        foreach($sql_queries as $queries) {
+            if(!empty($queries)) {
+                $result &= Db::getInstance()->execute(trim($queries));
+            }
+        }
+
+        return $result;
+    }
     // Affichage hook front
         //Récupération des infos de formulaire
         public function processForms()
         {
             if(Tools::isSubmit('submit_weekspecials_content'))
             {
-                $menu=Tools::getAllValues();
-                $menu=array_splice($menu,0,6); //FIXME:
-                $file=fopen(__DIR__.'/export.json','w+');
-                fwrite($file, json_encode($menu));
-                fclose($file);
+                $input=Tools::getAllValues();
+                $menu=serialize($input['menu']);
+                Db::getInstance()->update('weekspecials', 'array_weekspecials_menu' =>pSQL($menu), 'id_weekspecials_menu = 1');
             }
+            
         }
         // affichage hook displayHomeTab
     public function hookDisplayHomeTab()
