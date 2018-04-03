@@ -93,7 +93,15 @@ class WeekSpecials extends Module
         $output=unserialize($req['array_weekspecials_menu']);
         $args=array_keys($output);
         foreach($args as $arg){
-            $$arg=$output[$arg];
+            if($arg=='date'){
+                $dates=$output[$arg];
+                foreach($dates as $date){
+                    $date=explode('-',$date);
+                    $formatDates[]=$date[2].'/'.$date[1].'/'.$date[0];
+                }
+                $this->context->smarty->assign('dates',$formatDates);
+            }
+           $this->context->smarty->assign($arg,$output[$arg]);
         }
 
         var_dump($date);
