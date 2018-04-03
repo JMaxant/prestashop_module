@@ -1,10 +1,10 @@
 <?php
 
 /*
-TODO: controller front
-TODO: function dateformat
-TODO: Allergènes
-
+*TODO: controller front
+*TODO: function dateformat
+*TODO: Allergènes
+*
 */
 class WeekSpecials extends Module
 {
@@ -82,28 +82,33 @@ class WeekSpecials extends Module
             {
                 $input=Tools::getAllValues();
                 $menu=serialize($input['menu']);
-                Db::getInstance()->update('weekspecials', 'array_weekspecials_menu' =>pSQL($menu), 'id_weekspecials_menu = 1');
+                Db::getInstance()->insert('weekspecials', array('array_weekspecials_menu' => pSQL($menu)));
             }
             
         }
         // affichage hook displayHomeTab
     public function hookDisplayHomeTab()
     {   
-        $output=file_get_contents(__DIR__.'/export.json');
-        $output=json_decode($output, true);
-        $args=array_keys($output); // on récupère les clés du json converti en tableau, pour s'en servir en argument sur la boucle qui suit
-        foreach($args as $arg){
-            if($arg=='date') // Pour l'attribution de la valeur date, il faut la formater au format francophone d'abord, puis l'attribuer à Smarty
-            {
-                $dates=$output[$arg];
-                foreach($dates as $date){ // TODO:
-                    $date=explode('-',$date);
-                    $datesFormatees[]=$date[2].'/'.$date[1].'/'.$date[0];
-                }
-                $this->context->smarty->assign('dates',$datesFormatees);
-            }  
-            $this->context->smarty->assign($arg, $output[$arg]); //On attribue le reste des valeurs aux variables smarty dont le nom correspondra aux clés du formulaire weekspecials_content
-        }
+        $req=Db::getInstance()->getRow('SELECT `array_weekspecials_menu` FROM `'._DB_PREFIX_.'weekspecials` ORDER BY `id_weekspecials_menu` DESC');
+        $menu=unserialize($req['array_weekspecials_menu']);
+
+        // die;
+        // $output=
+        // $output=file_get_contents(__DIR__.'/export.json');
+        // $output=json_decode($output, true);
+        // $args=array_keys($output); // on récupère les clés du json converti en tableau, pour s'en servir en argument sur la boucle qui suit
+        // foreach($args as $arg){
+        //     if($arg=='date') // Pour l'attribution de la valeur date, il faut la formater au format francophone d'abord, puis l'attribuer à Smarty
+        //     {
+        //         $dates=$output[$arg];
+        //         foreach($dates as $date){ 
+        //             $date=explode('-',$date);
+        //             $datesFormatees[]=$date[2].'/'.$date[1].'/'.$date[0];
+        //         }
+        //         $this->context->smarty->assign('dates',$datesFormatees);
+        //     }  
+        //     $this->context->smarty->assign($arg, $output[$arg]); //On attribue le reste des valeurs aux variables smarty dont le nom correspondra aux clés du formulaire weekspecials_content
+        // }
         return $this->display(__FILE__, 'displayHomeTab.tpl');
     }
 
