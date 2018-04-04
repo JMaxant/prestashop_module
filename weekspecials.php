@@ -2,9 +2,9 @@
 
 /*
 *TODO: controller front
-*TODO: function dateformat
+*TODO: controller back
 *TODO: Allergènes
-*
+*TODO: refonte tpl back
 */
 class WeekSpecials extends Module
 {
@@ -86,6 +86,7 @@ class WeekSpecials extends Module
             }
             
         }
+
         // affichage hook displayHomeTab
     public function hookDisplayHomeTab()
     {   
@@ -99,13 +100,24 @@ class WeekSpecials extends Module
                     $date=explode('-',$date);
                     $formatDates[]=$date[2].'/'.$date[1].'/'.$date[0];
                 }
-                $this->context->smarty->assign('dates',$formatDates);
+            }else{
+                // $vg='<img src="'.dirname(__FILE__).'\img\vg.png" alt="Produit végétarien" title="Plat végétarien" />';
+                // $pork='<img src="'.dirname(__DIR__).'\img\pork.png" alt="Produit sans porc" title="Produit sans porc" />';
+                // $replacements=array(array('vg' => $vg, 'pork' => $pork));
+                // $output[$arg]=array_replace($output[$arg]);
+                // var_dump($output[$arg]);
+                // die;
+                $menu[]=$output[$arg];
             }
-           $this->context->smarty->assign($arg,$output[$arg]);
         }
-
-        var_dump($date);
-        var_dump($mon);
+        $this->context->smarty->assign('dates',$formatDates);
+        $this->context->smarty->assign('menu', $menu);
+        // var_dump($menu);
+        // die;
+        $ws_days=array('Lundi','Mardi','Mercredi','Jeudi','Vendredi');
+        $this->context->smarty->assign('ws_days',$ws_days);
+    // $this->context->smarty->assign('pork', $pork);
+    // $this->context->smarty->assign('vg',$vg);
         // die;
         // $output=file_get_contents(__DIR__.'/export.json');
         // $output=json_decode($output, true);
