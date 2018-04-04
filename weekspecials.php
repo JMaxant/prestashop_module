@@ -5,6 +5,8 @@
 *TODO: controller back
 *TODO: Allergènes
 *TODO: refonte tpl back
+*FIXME: table vide à l'install
+*FIXME: preview
 */
 class WeekSpecials extends Module
 {
