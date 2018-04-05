@@ -1,13 +1,17 @@
 <?php
 
 /*
-*TODO: controller front
-*TODO: controller back
+*TODO: controller front 
+*TODO: controller hooks
+*TODO: lien vers page formules
+*TODO: controller admin
 *TODO: Allergènes
 *TODO: refonte tpl back
 *FIXME: table vide à l'install
 *FIXME: preview
 */
+require_once(dirname(__FILE__).'/classes/WeekSpecial.php');
+
 class WeekSpecials extends Module
 {
     // constructeur
@@ -76,69 +80,22 @@ class WeekSpecials extends Module
 
         return $result;
     }
-    // Affichage hook front
-        //Récupération des infos de formulaire
-        public function processForms()
-        {
-            if(Tools::isSubmit('submit_weekspecials_content'))
-            {
-                $input=Tools::getAllValues();
-                $menu=serialize($input['menu']);
-                Db::getInstance()->insert('weekspecials', array('array_weekspecials_menu' => pSQL($menu)));
-            }
-            
-        }
 
-        // affichage hook displayHomeTab
-    public function hookDisplayHomeTab()
-    {   
-        $req=Db::getInstance()->getRow('SELECT `array_weekspecials_menu` FROM `'._DB_PREFIX_.'weekspecials` ORDER BY `id_weekspecials_menu` DESC');
-        $output=unserialize($req['array_weekspecials_menu']);
-        $args=array_keys($output);
-        foreach($args as $arg){
-            if($arg=='date'){
-                $dates=$output[$arg];
-                foreach($dates as $date){
-                    $date=explode('-',$date);
-                    $formatDates[]=$date[2].'/'.$date[1].'/'.$date[0];
-                }
-            }else{
-                // $vg='<img src="'.dirname(__FILE__).'\img\vg.png" alt="Produit végétarien" title="Plat végétarien" />';
-                // $pork='<img src="'.dirname(__DIR__).'\img\pork.png" alt="Produit sans porc" title="Produit sans porc" />';
-                // $replacements=array(array('vg' => $vg, 'pork' => $pork));
-                // $output[$arg]=array_replace($output[$arg]);
-                // var_dump($output[$arg]);
-                // die;
-                $menu[]=$output[$arg];
-            }
-        }
-        $this->context->smarty->assign('dates',$formatDates);
-        $this->context->smarty->assign('menu', $menu);
-        // var_dump($menu);
-        // die;
-        $ws_days=array('Lundi','Mardi','Mercredi','Jeudi','Vendredi');
-        $this->context->smarty->assign('ws_days',$ws_days);
-    // $this->context->smarty->assign('pork', $pork);
-    // $this->context->smarty->assign('vg',$vg);
-        // die;
-        // $output=file_get_contents(__DIR__.'/export.json');
-        // $output=json_decode($output, true);
-        // $args=array_keys($output); // on récupère les clés du json converti en tableau, pour s'en servir en argument sur la boucle qui suit
-        // foreach($args as $arg){
-        //     if($arg=='date') // Pour l'attribution de la valeur date, il faut la formater au format francophone d'abord, puis l'attribuer à Smarty
-        //     {
-        //         $dates=$output[$arg];
-        //         foreach($dates as $date){ 
-        //             $date=explode('-',$date);
-        //             $datesFormatees[]=$date[2].'/'.$date[1].'/'.$date[0];
-        //         }
-        //         $this->context->smarty->assign('dates',$datesFormatees);
-        //     }  
-        //     $this->context->smarty->assign($arg, $output[$arg]); //On attribue le reste des valeurs aux variables smarty dont le nom correspondra aux clés du formulaire weekspecials_content
-        // }
-        return $this->display(__FILE__, 'displayHomeTab.tpl');
+    // Displays Hooks via controllers
+    public function getHookController($hook_name)
+    {
+        require_once(dirname(__FILE__).'/controllers/hook/'.$hook_name.'.php');
+        $controller_name=$this->name.$hook_name.'Controller';
+        $controller= new $controller_name($this, __FILE__,$this->path);
+        return $controller;
     }
 
+    // Front
+    public function hookDisplayHomeTab($params)
+    {
+        $controller=$this->getHookController('displayHomeTab');
+        return $controller->run($params);
+    }
     // Page de config
         // Enregistrement des paramètres de configuration
     public function processConfiguration()
