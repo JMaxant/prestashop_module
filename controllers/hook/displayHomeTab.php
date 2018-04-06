@@ -10,31 +10,13 @@ class WeekSpecialsDisplayHomeTabController
         $this->path=$path;
     }
 
-    // Affichage hook front
-        //Récupération des infos de formulaire
-        public function processForms()
-        {
-            if(Tools::isSubmit('submit_weekspecials_content'))
-            {
-                $input=Tools::getAllValues();
-                $menu=serialize($input['menu']);
-
-                if(!Validate::isString($menu)){
-                    $this->context->smarty->assign('error','error');
-                }
-                $WeekSpecial=new WeekSpecial();
-                $WeekSpecial->array_weekspecials_menu=$menu;
-                $WeekSpecial->add();
-            }
-            
-        }
-
         // affichage hook displayHomeTab
     public function run()
     {   
         $req=WeekSpecial::getWeeksMenu();
         $output=unserialize($req['array_weekspecials_menu']);
         $args=array_keys($output);
+        // die;
         foreach($args as $arg){
             if($arg=='date'){
                 $dates=$output[$arg];
