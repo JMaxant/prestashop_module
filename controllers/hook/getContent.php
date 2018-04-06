@@ -22,7 +22,22 @@ class WeekSpecialsGetContentController
             $this->context->smarty->assign('confirmation','true');
         }
     }
-
+    public function processForms()
+    {
+        if(Tools::isSubmit('submit_weekspecials_content'))
+            {
+                $input=Tools::getAllValues();
+                $menu=$input['menu'];
+                $menu=serialize($input['menu']);
+                if(!Validate::isString($menu)){
+                    $this->context->smarty->assign('error','error');
+                }
+                $WeekSpecial=new WeekSpecial();
+                $WeekSpecial->array_weekspecials_menu=$menu;
+                $WeekSpecial->add();
+            }
+           
+    }    
         // Submit template modifications && display .tpl content in textarea
     public function assignTemplate()
     {
@@ -48,8 +63,12 @@ class WeekSpecialsGetContentController
         // Affichage back
     public function run()
     {
+        $days=array('monday','tuesday','wednesday','thursday','friday');
+        $this->context->smarty->assign('days', $days);
+        $courses=array('first_course','salad','dish');
+        $this->context->smarty->assign('courses',$courses);
         $this->processConfiguration();
-        // $this->processForms();
+        $this->processForms();
         // $this->assignTemplate();
         // $this->hookDisplayHomeTab();
         $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
