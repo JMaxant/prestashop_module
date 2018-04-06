@@ -21,8 +21,8 @@
             <div class="form-group">
                 <label class="label control-label col-sm-3">Saisissez ici la date de votre choix</label>
                 <div class="col-sm-9">
-                    <input type="date" name="date[0]" />
-                    <input type="date" name="date[1]" />
+                    <input type="date" name="menu[date][]" />
+                    <input type="date" name="menu[date][]" />
                 </div>
             </div>
             {capture}{assign "i" 0}{/capture}
