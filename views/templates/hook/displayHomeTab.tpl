@@ -12,47 +12,21 @@
             </tr>
         </thead>
         <tbody>
-        {$mon|@var_dump}
-            {if !empty($mon)}
+        {capture}{assign "i" 0}{/capture}
+        {foreach from=$ws_days item=day}
             <tr>
-                <td><strong>Lundi</strong></td>
-                <td>{$mon.0}</td>
-                <td>{$mon.1}</td>
-                <td>{$mon.2}</td>
+                <td><strong>{$day}</strong></td>
+            {foreach from=$menu.$i item=course}
+                <td>
+                    {$course.name}<br/>
+                    {$course.vg}
+                    {$course.pork}
+                    <p><small>Informations allergènes</p>
+                </td>
+            {/foreach}
+                {capture}{$i++}{/capture}
             </tr>
-            {/if}
-            {if !empty($tue)}
-            <tr>
-                <td><strong>Mardi</strong></td>
-                <td>{$tue.0}</td>
-                <td>{$tue.1}</td>
-                <td>{$tue.2}</td>
-            </tr>
-            {/if}
-            {if !empty($wed)}
-            <tr>
-                <td><strong>Mercredi</strong></td>
-                <td>{$wed.0}</td>
-                <td>{$wed.1}</td>
-                <td>{$wed.2}</td>
-            </tr>
-            {/if}
-            {if !empty($thu)}
-            <tr>
-                <td><strong>Jeudi</strong></td>
-                <td>{$thu.0}</td>
-                <td>{$thu.1}</td>
-                <td>{$thu.2}</td>
-            </tr>
-            {/if}
-            {if !empty($fri)}
-            <tr>
-                <td><strong>Vendredi</strong></td>
-                <td>{$fri.0}</td>
-                <td>{$fri.1}</td>
-                <td>{$fri.2}</td>
-            </tr>
-            {/if}
+        {/foreach}
         </tbody>
         <tfooter>
             <tr>
