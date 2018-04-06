@@ -25,141 +25,23 @@
                     <input type="date" name="date[1]" />
                 </div>
             </div>
-            <h3><a href="#monday" data-toggle="collapse">Monday <span class="icon-arrow-down"></span></a></h3>
-            <div id="monday" class="form-group collapse in">
+            {capture}{assign "i" 0}{/capture}
+            {foreach from=$days item=day}
+            <h3><a href="#{$day}" data-toggle="collapse">{$day} <span class="icon-arrow-down"></span></a></h3>
+            <div id="{$day}" class="form-group collapse {if $i eq 0}in{/if}">
+                {foreach from=$courses item=course}
                 <div class="col-sm-4">
                     <label>Entrée du jour</label>
-                    <textarea name="monday[0]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="menu[0][first_course][vg]" />
+                    <textarea name="menu[{$day}][{$course}][name]"></textarea>
+                    <label>Vegetarian dish</label>
+                    <input type="checkbox" name="menu[{$day}][{$course}][vg]"  value="1"/>
                     <label>Porkfree dish</label>
-                    <input type="checkbox" name="menu[0][first_course][hallal]"  /> *}
+                    <input type="checkbox" name="menu[{$day}][{$course}][pork]" value="1"  />
                 </div>
-                <div class="col-sm-4">
-                    <label>Salade du jour</label>                
-                    <textarea name="monday[1]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="monday[1]option[0]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="monday[1]option[1]" value="hallal" /> *}
-                </div>
-                <div class="col-sm-4">
-                    <label>Plat du jour</label>
-                    <textarea name="monday[2]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="monday[2]option[0]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="monday[2]option[1]" value="hallal" /> *}
-                </div>
+                {/foreach}
             </div>
-            <h3><a href="#tuesday" data-toggle="collapse">Tuesday <span class="icon-arrow-down"></span></a></h3>
-            <div id="tuesday" class="form-group collapse">
-                <div class="col-sm-4">
-                    <label>Entrée du jour</label>
-                    <textarea name="tuesday[0]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="option[]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
-                <div class="col-sm-4">
-                    <label>Plat du jour</label>                
-                    <textarea name="tuesday[1]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="option[]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
-                <div class="col-sm-4">
-                    <label>Plat du jour</label>
-                    <textarea name="tuesday[2]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="option[]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
-            </div>
-            <h3><a href="#wednesday" data-toggle="collapse" > Wednesday <span class="icon-arrow-down"></span></a></h3>
-            <div id="wednesday" class="form-group collapse">
-                <div class="col-sm-4">
-                    <label>Entrée du jour</label>
-                    <textarea name="wednesday[0]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="option[]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
-                <div class="col-sm-4">
-                    <label>Plat du jour</label>                
-                    <textarea name="wednesday[1]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="option[]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
-                <div class="col-sm-4">
-                    <label>Plat du jour</label>
-                    <textarea name="wednesday[2]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="option[]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
-            </div>
-            <h3><a href="#thursday" data-toggle="collapse">Thursday <span class="icon-arrow-down"></span></a></h3>
-            <div id="thursday"  class="form-group collapse">
-                <div class="col-sm-4">
-                    <label>Entrée du jour</label>
-                    <textarea name="thursday[0]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="option[]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
-                <div class="col-sm-4">
-                    <label>Plat du jour</label>                
-                    <textarea name="thursday[1]"></textarea> 
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="option[]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
-                <div class="col-sm-4">
-                    <label>Plat du jour</label>
-                    <textarea name="thursday[2]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="option[]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="option[]" value="hallal" /> *}
-                 </div>
-            </div>
-           <h3><a href="#friday" data-toggle="collapse">Friday<span class="icon-arrow-down"></span></a></h3>
-           <div id="friday" class="form-group collapse">
-                <div class="col-sm-4">
-                    <label>Entrée du jour</label>
-                    <textarea name="friday[0]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="option[]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
-                <div class="col-sm-4">
-                    <label>Plat du jour</label>                
-                    <textarea name="friday[1]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="option[]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
-                <div class="col-sm-4">
-                    <label>Plat du jour</label>
-                    <textarea name="friday[2]"></textarea>
-                    {* <label>Vegetarian dish</label>
-                    <input type="checkbox" name="option[]" value="vg" />
-                    <label>Porkfree dish</label>
-                    <input type="checkbox" name="option[]" value="hallal" /> *}
-                </div>
-            </div>
+            {capture}{$i++}{/capture}
+            {/foreach}
                   
         </div><!--form-wrapper-->
         <div class="panel-footer">
