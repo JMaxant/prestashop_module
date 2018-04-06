@@ -22,6 +22,8 @@ class WeekSpecialsGetContentController
             $this->context->smarty->assign('confirmation','true');
         }
     }
+    
+      // Saves the submitted content to db
     public function processForms()
     {
         if(Tools::isSubmit('submit_weekspecials_content'))
@@ -67,6 +69,7 @@ class WeekSpecialsGetContentController
         $this->context->smarty->assign('days', $days);
         $courses=array('first_course','salad','dish');
         $this->context->smarty->assign('courses',$courses);
+
         $this->processConfiguration();
         $this->processForms();
         // $this->assignTemplate();
@@ -87,8 +90,8 @@ class WeekSpecialsGetContentController
         $fields_form=array(
             'form'=>array(
                 'legend'=>array(
-                    'title'=>$this->module->l('Weekly specials'),
-                    'icon' =>'icon-envelope'
+                    'title'=>$this->module->l('Weekly specials configuration'),
+                    'icon' =>'icon-wrench'
                 ),
                 'input'=>array(
                     array(
@@ -100,11 +103,11 @@ class WeekSpecialsGetContentController
                             array(
                                 'id'=>'enable_1',
                                 'value'=> 1,
-                                'label'=>$this->module->l('Enabled')
+                                'label'=>$this->module->l('Enabled'),
                             ), array(
                                 'id'=> 'enable_0',
                                 'value'=>0,
-                                'label'=>$this->module->l('Disabled')
+                                'label'=>$this->module->l('Disabled'),
                             )
                         ),
                     ), array(
@@ -116,13 +119,13 @@ class WeekSpecialsGetContentController
                             array(
                                 'id'=>'template_1',
                                 'value'=>1,
-                                'label'=>$this->module->l('Enabled')
+                                'label'=>$this->module->l('Enabled'),
                             ), array(
                                 'id'=>'template_0',
                                 'value'=>0,
-                                'label'=>$this->module->l('Disabled')
+                                'label'=>$this->module->l('Disabled'),
                             )
-                        )
+                        ),
                     ),
                 ),
                 'submit'=>array(
@@ -130,12 +133,13 @@ class WeekSpecialsGetContentController
                 )
             ),
         );
+
         $helper=new HelperForm();
         $helper->table='weekspecials_config';
         $helper->default_form_language=(int)Configuration::get('PS_LANG_DEFAULT');
         $helper->allow_employee_form_lang=(int)Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG');
         $helper->submit_action='submit_weekspecials_config';
-        $helper->currentIndex=$this->context->link->getAdminLink('AdminModules',false).'&configure='.$this->name.'&tab_module='.$this->tab.'$module_name='.$this->name;
+        $helper->currentIndex=$this->context->link->getAdminLink('AdminModules',false).'&configure='.$this->module->name.'&tab_module='.$this->module->tab.'&module_name='.$this->module->name;
         $helper->token=Tools::getAdminTokenLite('AdminModules');
         $helper->tpl_vars=array(
             'fields_value'=>array(
