@@ -69,7 +69,9 @@ class WeekSpecialsGetContentController
         $this->context->smarty->assign('days', $days);
         $courses=array('first_course','salad','dish');
         $this->context->smarty->assign('courses',$courses);
-
+        $allergies=array('Gluten', 'Crustacés', 'Oeufs','Poisson','Arachides','Soja','Lait','Fruits à coque','Céleri','Moutarde','Sésame','Sulfites','Lupin','Mollusques');
+        sort($allergies);
+        $this->context->smarty->assign('allergies', $allergies);
         $this->processConfiguration();
         $this->processForms();
         // $this->assignTemplate();
