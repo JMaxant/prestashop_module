@@ -21,7 +21,9 @@
                     {$course.name}<br/>
                     {$course.vg}
                     {$course.pork}
-                    <p><small>Informations allergènes</p>
+                    {if isset($course.allergene)&&!empty($course.allergene)}
+                        <p title="Contient des {foreach from=$course.allergene item=allergene}{$allergene} {/foreach} "><small>Informations allergènes</small></p>
+                    {/if}
                 </td>
             {/foreach}
                 {capture}{$i++}{/capture}
