@@ -16,7 +16,6 @@ class WeekSpecialsDisplayHomeTabController
         $req=WeekSpecial::getWeeksMenu();
         $output=unserialize($req['array_weekspecials_menu']);
         $args=array_keys($output);
-        // die;
         foreach($args as $arg){
             if($arg=='date'){
                 $dates=$output[$arg];
