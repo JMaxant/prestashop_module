@@ -31,12 +31,17 @@
             <div id="{$day}" class="form-group collapse {if $i eq 0}in{/if}">
                 {foreach from=$courses item=course}
                 <div class="col-sm-4">
-                    <label>Entrée du jour</label>
+                    <label><span class="text-capitalize">{$course|replace:'_':' '}</span></label>
                     <textarea name="menu[{$day}][{$course}][name]"></textarea>
                     <label>Vegetarian dish</label>
                     <input type="checkbox" name="menu[{$day}][{$course}][vg]"  value="1"/>
                     <label>Porkfree dish</label>
                     <input type="checkbox" name="menu[{$day}][{$course}][pork]" value="1"  />
+                    <select id="allergenes" name="menu[{$day}][{$course}][allergene][]" multiple>
+                        {foreach from=$allergies item=allergene}
+                            <option value="{$allergene}">{$allergene}</option>
+                        {/foreach}
+                    </select>
                 </div>
                 {/foreach}
             </div>
@@ -91,4 +96,3 @@
         </form>
     </section>
 {/if}
-{debug}
