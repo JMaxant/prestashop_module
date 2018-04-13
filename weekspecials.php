@@ -1,17 +1,13 @@
 <?php
 
 /*
-*TODO: controller front 
-*TODO: controller hooks //
 *TODO: preview
 *TODO: lien vers page formules
 *TODO: controller admin
-*TODO: Allergènes
-*TODO: refonte tpl back
-*FIXME: table vide à l'install
 *FIXME: preview
 */
 require_once(dirname(__FILE__).'/classes/WeekSpecial.php');
+
 
 class WeekSpecials extends Module
 {
@@ -30,6 +26,31 @@ class WeekSpecials extends Module
         parent::__construct();
     }
 
+    // Install & uninstall tab
+
+    public function installTab($parent, $class_name, $name)
+    {
+        $tab= new Tab();
+        $tab->id_parent=(int)Tab::getIdFromClassName($parent);
+        $tab->name=array();
+        foreach(Language::getLanguages(true) as $lang){
+            $tab->name[$lang['id_lang']]=$name;
+        }
+        $tab->class_name=$class_name;
+        $tab->module=$this->name;
+        $tab->active=1;
+        return $tab->add();
+    }
+
+    public function uninstallTab($class_name)
+    {
+        $id_tab=(int)Tab::getIdFromClassName($class_name);
+        $tab=new Tab((int)$id_tab);
+
+        return $tab->delete();
+    }
+
+
     // Install
     public function install()
     {
@@ -41,11 +62,19 @@ class WeekSpecials extends Module
         if(!$this->loadSQLFile($sql_file)){
             return false;
         }
+
+        if(!$this->installTab('AdminCatalog','AdminWeekSpecials','Week Specials')){
+            return false;
+        }
         
         if(!$this->registerHook('displayHomeTab')){
             return false;
         }
         
+        $allergens=serialize(array('Gluten', 'Crustacés', 'Oeufs','Poisson','Arachides','Soja','Lait','Fruits à coque','Céleri','Moutarde','Sésame','Sulfites','Lupin','Mollusques'));
+        Configuration::updateValue('WEEKS_DISHES','3');
+        Configuration::updateValue('WEEKS_TEMPLATE','0');
+        Configuration::updateValue('WEEKS_ALLERG',$allergens);
         return true;
     }
     
@@ -57,6 +86,10 @@ class WeekSpecials extends Module
         }
         $sql_file=dirname(__FILE__).'/install/uninstall.sql';
         if(!$this->loadSQLFile($sql_file)){
+            return false;
+        }
+
+        if(!$this->uninstallTab('AdminWeekSpecials')){
             return false;
         }
 
@@ -105,6 +138,7 @@ class WeekSpecials extends Module
         $controller=$this->getHookController('getContent');
         return $controller->run($params);
     }
+    
 }
 
 ?>
