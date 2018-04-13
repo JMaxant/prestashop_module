@@ -17,7 +17,13 @@ class AdminWeekSpecialsController extends ModuleAdminController
     public function initContent()
     {
         parent::initContent();
+
+        $nb_dishes=Configuration::get('WEEKS_DISHES');
+        $allergs=Configuration::get('WEEKS_ALLERG');
+        $days=array('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday');
+
+        $this->context->smarty->assign('nb_dishes',$nb_dishes);
+        $this->context->smarty->assign('allergies',$allergs);
+        $this->context->smarty->assign('days',$days);
     }
-
-
 }
