@@ -13,8 +13,9 @@ class WeekSpecialsDisplayHomeTabController
         // affichage hook displayHomeTab
     public function run()
     {   
-        $req=WeekSpecial::getWeeksMenu();
-        $output=unserialize($req['array_weekspecials_menu']);
+        $row='array_weekspecials_menu';
+        $req=WeekSpecial::getRows($row);
+        $output=unserialize($req[$row]);
         $args=array_keys($output);
         foreach($args as $arg){
             if($arg=='date'){
