@@ -1,8 +1,10 @@
 <?php
+<?php
 
 class WeekSpecial extends ObjectModel
 {
     public $id_weekspecials_menu;
+    public $courses_weekspecials_menu;
     public $array_weekspecials_menu;
 
     /*
@@ -14,20 +16,59 @@ class WeekSpecial extends ObjectModel
         'primary'=>'id_weekspecials_menu',
         'multilang'=>true,
         'fields'=>array(
-            'array_weekspecials_menu'=> array(
+            'id_weekspecials_menu'=>array(
+                'type'=>SELF::TYPE_INT,
+                'validate'=>'isUnsignedInt',
+                'required'=>true
+            ),'courses_weekspecials_menu'=> array(
                 'type'=>self::TYPE_STRING,
                 'validate'=>'isString',
-                'required'=>true,
-            ),
+            ),'array_weekspecials_menu'=> array(
+                'type'=>self::TYPE_STRING,
+                'validate'=>'isString',
+            )
         ),
     );
 
-    public static function getWeeksMenu()
+    public static function getRows($row)
     {
         $req=Db::getInstance()->getRow('
-        SELECT `array_weekspecials_menu` 
+        SELECT `'.$row.'` 
         FROM `'._DB_PREFIX_.'weekspecials` 
         ORDER BY `id_weekspecials_menu` DESC');
+
         return $req;
     }
 }
+
+// class WeekSpecial extends ObjectModel
+// {
+//     public $id_weekspecials_menu;
+//     public $array_weekspecials_menu;
+
+//     /*
+//     *@see ObjectModel::$definition
+//     */
+
+//     public static $definition=array(
+//         'table'=>'weekspecials',
+//         'primary'=>'id_weekspecials_menu',
+//         'multilang'=>true,
+//         'fields'=>array(
+//             'array_weekspecials_menu'=> array(
+//                 'type'=>self::TYPE_STRING,
+//                 'validate'=>'isString',
+//                 'required'=>true,
+//             ),
+//         ),
+//     );
+
+//     public static function getWeeksMenu()
+//     {
+//         $req=Db::getInstance()->getRow('
+//         SELECT `array_weekspecials_menu` 
+//         FROM `'._DB_PREFIX_.'weekspecials` 
+//         ORDER BY `id_weekspecials_menu` DESC');
+//         return $req;
+//     }
+// }
