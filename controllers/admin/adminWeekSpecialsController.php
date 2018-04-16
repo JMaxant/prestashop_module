@@ -10,7 +10,8 @@ class AdminWeekSpecialsController extends ModuleAdminController
         $this->table='weekspecials';
         $this->className='WeekSpecial';
         $this->bootstrap=true;
-        $this->path=parent::getTemplatePath();
+        $this->setTemplate('admin.tpl');
+        
         parent::__construct();
     }
 
