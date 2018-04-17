@@ -12,20 +12,17 @@ class AdminWeekSpecialsController extends ModuleAdminController
         $this->bootstrap=true;
         $this->setTemplate('admin.tpl');
 
-
         parent::__construct();
     }
 
     public function initContent()
     {
-        
         parent::initContent();
         
         $nb_dishes=Configuration::get('WEEKS_DISHES');
         $allergs=unserialize(Configuration::get('WEEKS_ALLERG'));
-        $days=array('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'); //FIXME:
+        $days=array('Monday','Tuesday','Wednesday','Thursday','Friday'); //FIXME:
         $class='col-sm-'.round(12/$nb_dishes); // allows to throw bootstrap classes depending on the number of dishes
-
 
         $this->context->smarty->assign('class',$class);
         $this->context->smarty->assign('nb_dishes',$nb_dishes);
@@ -38,16 +35,37 @@ class AdminWeekSpecialsController extends ModuleAdminController
     {
         if(Tools::isSubmit('submit_weekspecial_courses'))
         {
-            $courses=Tools::getValue('courses');
+            $input=Tools::getValue('courses');
+            foreach($input as $course){
+                $course=$this->module->stripAccents($course);
+                $courses[]=$course;
+            }
+            $this->context->smarty->assign('course', $courses);
             $courses=serialize($courses);
-            // $WeekSpecial=new WeekSpecial();
-            // $WeekSpecial->courses_weekspecials_menu=$courses;
-            // $WeekSpecial->add();
+            $WeekSpecial=new WeekSpecial();
+            $WeekSpecial->courses_weekspecials_menu=$courses;
+            $WeekSpecial->save();    
+        }
+        if(Tools::isSubmit('submit_weekspecials_content'))
+        {
+            $input=Tools::getAllValues();
+            $menu=$input['menu'];
+            $menu=serialize($menu);
+            $WeekSpecial=new WeekSpecial();
+            $fields=$WeekSpecial->getFields();
+            var_dump($fields);
+            die;
+            // $WeekSpecial=new Weekspecial();
+            // $WeekSpecial->array_weekspecials_menu=$menu;
+            // $WeekSpecial->update();
         }
     }
+
+            
     /**
-     * @See Controller.php for more info on run() (basically handles all)
+     * @See Controller.php for more info on run()
      */
+
     public function run()
     {
         parent::run();
