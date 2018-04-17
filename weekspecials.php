@@ -8,9 +8,9 @@
 */
 require_once(dirname(__FILE__).'/classes/WeekSpecial.php');
 
-
 class WeekSpecials extends Module
 {
+    // $this->context->smarty->register_function('stripAccents', array('WeekSpecials','stripAccents'));
     // constructeur
     public function __construct()
     {
@@ -67,7 +67,7 @@ class WeekSpecials extends Module
             return false;
         }
         
-        if(!$this->registerHook('displayHomeTab')){
+        if((!$this->registerHook('displayHomeTab'))&&(!$this->registerHook('actionDispatcher'))){
             return false;
         }
         
@@ -115,6 +115,13 @@ class WeekSpecials extends Module
         return $result;
     }
 
+    public function hookActionDispatcher()
+    {
+        /*
+         * Register the plugin everytime a controller is instantiated 
+         */
+        $this->context->smarty->registerPlugin('modifier','stripAccents', array('customSmarty', 'remove_accents'));
+    }
     // Displays Hooks via controllers
     public function getHookController($hook_name)
     {
@@ -139,6 +146,26 @@ class WeekSpecials extends Module
         return $controller->run($params);
     }
     
+    public function stripAccents($str)
+    {
+        $ret=$str;
+        $ret = preg_replace('#Ç#', 'C', $ret);
+        $ret = preg_replace('#ç#', 'c', $ret);
+        $ret = preg_replace('#è|é|ê|ë#', 'e', $ret);
+        $ret = preg_replace('#È|É|Ê|Ë#', 'E', $ret);
+        $ret = preg_replace('#à|á|â|ã|ä|å#', 'a', $ret);
+        $ret = preg_replace('#@|À|Á|Â|Ã|Ä|Å#', 'A', $ret);
+        $ret = preg_replace('#ì|í|î|ï#', 'i', $ret);
+        $ret = preg_replace('#Ì|Í|Î|Ï#', 'I', $ret);
+        $ret = preg_replace('#ð|ò|ó|ô|õ|ö#', 'o', $ret);
+        $ret = preg_replace('#Ò|Ó|Ô|Õ|Ö#', 'O', $ret);
+        $ret = preg_replace('#ù|ú|û|ü#', 'u', $ret);
+        $ret = preg_replace('#Ù|Ú|Û|Ü#', 'U', $ret);
+        $ret = preg_replace('#ý|ÿ#', 'y', $ret);
+        $ret = preg_replace('#Ý#', 'Y', $ret);
+        
+        return $ret;
+    }    
 }
 
 ?>
