@@ -1,13 +1,12 @@
-<section class="col-sm-12">
-    <br/>
+<section class="col-sm-12 ws_content_render">
     <h2 class="text-center">Les recettes de la semaine</h2>
     <h3 class="text-center">du {$dates.0} au {$dates.1}</h3>
-    <table class="table col-sm-12">
+    <table class="table table-bordered preview">
         <thead>
             <tr>
                 <th></th>
                 {foreach from=$courses item=course}
-                <th>{$course|upper}</th>
+                <th class="table_render"><span>{$course|upper}</span></th>
                 {/foreach}
             </tr>
         </thead>
@@ -15,9 +14,9 @@
         {capture}{assign "i" 0}{/capture}
         {foreach from=$ws_days item=day}
             <tr>
-                <td><strong>{$day|upper}</strong></td>
+                <th scope="row">{$day|upper}</th>
             {foreach from=$menu.$i item=course}
-                <td>
+                <td class="table_render">
                     {$course.name}<br/>
                     {$course.vg}
                     {$course.pork}

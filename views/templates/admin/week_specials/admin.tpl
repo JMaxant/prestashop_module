@@ -5,11 +5,11 @@
             <h3><i class="icon-chevron-right"></i><a href="#step_1" data-toggle="collapse">Step 1 : Setting the type of courses</a></h3>
         </div><!--panel-heading-->
 
-        <div class="panel-body collapse in" id="step_1">
+        <div class="panel-body collapse in" id="ws_step_1">
             <label class="label control-label col-sm-3">Saisissez ici le type de plats</label>
             <div class="col-sm-9">
                 {for $i=1 to $nb_dishes}
-                <input type="text" name="courses[{$i}]" class="{$class}" /> {*TODO:CSS TAILLE INPUT width:inherit +*}
+                <input type="text" name="courses[{$i}]" class="{$class} ws_input_dishes" /> {*TODO:CSS TAILLE INPUT width:inherit +*}
                 {/for}
             </div>
         </div><!--panel-body-->
@@ -19,7 +19,7 @@
             <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_date" data-toggle="collapse">Step 2 : Select the dates</a></h3>
         </div><!--panel-heading-->
 
-        <div id="ws_date" class="panel-body collapse" >
+        <div id="ws_step_2" class="panel-body collapse">
             <div class="form-group">
                 <label class="label control-label col-sm-3">Saisissez ici la date de votre choix</label>
                 <div class="col-sm-9">
@@ -33,7 +33,7 @@
             <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_main" data-toggle="collapse">Etape 3 : Saisissez le nom et les détails des plats</a></h3>
         </div><!--panel-heading-->
 
-        <div id="ws_main" class="panel-body collapse">
+        <div id="ws_step_3" class="panel-body collapse">
             {foreach from=$days item=day name=day}
             <br/>
             <h3><a href="#{$day}" data-toggle="collapse">{$day} <span class="icon-arrow-down"></span></a></h3>
@@ -63,6 +63,7 @@
         </div> <!--panel-footer-->
     </section><!--panel-->
 </form>
+
 {*Preview*}
 
 <section class="panel">
@@ -70,53 +71,10 @@
         <h3><i class="icon-desktop"></i>&nbsp;Prévisualisation en direct</h3>
     </div>
     
-    <div class="panel-body back_back">
-
-        <h3 style="background:#C6AEA4;padding:20px 0;color:#fff!important;margin:auto!important;">QU'EST-CE QU'ON MANGE CETTE SEMAINE ?</h3>
-
-        <table class="table-bordered table_previ">
-            <thead>
-                <tr>
-                    <th class="semaine"></th>
-                    <th class="table_back"><span style="font-size:24px;color:#C49D42;">ENTRÉE</span></th>
-                    <th class="tablee_back"><span style="font-size:24px;color:#C49D42;">SALADE</span></th>
-                    <th class="tablee_back"><span style="font-size:24px;color:#C49D42;">PLAT</span></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th scope="row">Lundi</th>
-                    <td class="table_back"><p id="visuel_entree_lundi"> </p></td>
-                    <td class="table_back"><span id="visuel_salade_lundi"></span></td>
-                    <td class="table_back"><span id="visuel_plat_lundi"></span></td>
-                </tr>
-                <tr>
-                <th scope="row">Mardi</th>
-                    <td class="table_back"><p id="visuel_entree_mardi"></p></td>
-                    <td class="table_back"><span id="visuel_salade_mardi"></span></td>
-                    <td class="table_back"><span id="visuel_plat_mardi"></span></td>
-                </tr>
-                <tr>
-                <th scope="row">Mercredi</th>
-                    <td class="table_back"><p id="visuel_entree_mercredi"></p></td>
-                    <td class="table_back"><span id="visuel_salade_mercredi"></span></td>
-                    <td class="table_back"><span id="visuel_plat_mercredi"></span></td>
-                </tr>
-                <tr>
-                <th scope="row">Jeudi</th>
-                    <td class="table_back"><p id="visuel_entree_jeudi"></p></td>
-                    <td class="table_back"><span id="visuel_salade_jeudi"></span></td>
-                    <td class="table_back"><span id="visuel_plat_jeudi"></span></td>
-                </tr>
-                <tr>
-                <th scope="row">Vendredi</th>
-                    <td class="table_back"><p id="visuel_entree_vendredi"></p></td>
-                    <td class="table_back"><span id="visuel_salade_vendredi"></span></td>
-                    <td class="table_back"><span id="visuel_plat_vendredi"></span></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="panel-body">
+        {include file="$path"}
     </div>
 </section>
+{*Template editor*}
 
 {debug}

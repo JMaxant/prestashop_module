@@ -2,71 +2,50 @@
 	padding:0!important;
 	margin:0!important;
 }
-h2{
-	width:80%;
+.ws_content_render>h3, .ws_content_render>h2{
+    background:#C6AEA4;
+    padding:20px 0;
+    color:#fff!important;
+    margin:auto!important;
+    width:100%;
+    text-align: center;
 }
-
-
-.back_back{
+.ws_input_dishes{
+    margin: 0 5px;
+    max-width: 30%;
+}
+.ws_content_render{
 	background:url('http://localhost/prestashop_essai/img/back.jpg')no-repeat center center;
-	height:600px;
-	display:flex;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
 	align-items:center;
 	padding:5px;
-	max-width:80%;
-	margin:auto;
+    margin:auto;
+    margin-top:40px;
 }
-.table_back{
-	width:30%!important;
+.table_render{
+    width:30%!important;
 	text-align:center!important;
 	font-size:16px;
 	padding:10px 0;
 }
-.table_previ{
-	width:80%;
+.preview{
+    width:80%;
 	margin:35px auto;
 }
-
 th{
-	text-align:center!important;
+    text-align:center!important;
 	font-size:16px!important;
 	padding:20px 0!important;
 	background:rgba(255,255,255,0.7);
+}
+th.table_render span{
+    font-size:24px;
+    color:#C49D42;
 }
 td{
 	background:rgba(198,174,165,0.5);
 	color:#fff;
 	padding:20px 0!important;
-}
-td p, td span{
-	font-size:20px;
-	font-weight:600;
-	font-style:italic;
-	background:rgba(198,174,165,0.4);
-}
-.semaine{
-	visibility:hidden;
-}
-/*ça c'est lfront !!!! */
-.back_bla{
-	background:url('http://localhost/prestashop_essai/img/back.jpg')center center!important;
-	height:600px;
-	display:flex;
-	align-items:center;
-	padding:15px;
-	width:100%;
-}
-.table_front{
-	width:30%!important;
-	text-align:center!important;
-	font-size:16px;
-	padding:10px 0;
-}
-.table_home{
-	width:100%;
-	margin:35px auto;
-}
-
-.titre_front{
-	width:100%;
 }

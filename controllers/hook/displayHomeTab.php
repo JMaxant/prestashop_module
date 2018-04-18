@@ -12,8 +12,6 @@ class WeekSpecialsDisplayHomeTabController
 
     public function setMedia()
     {
-        parent::setMedia();
-
         $this->path=__PS_BASE_URI__.'modules/weekspecials/';
         $this->context->controller->addCSS($this->path.'views/css/styles.css','all');
         $this->context->controller->addJS($this->path.'views/js/app.js');
@@ -37,12 +35,13 @@ class WeekSpecialsDisplayHomeTabController
                 $menu[]=$output[$arg];
             }
         }
-        // var_dump($menu);
         $this->context->smarty->assign('dates',$formatDates);
         $this->context->smarty->assign('menu', $menu);
         $this->context->smarty->assign('courses',$courses);
         $ws_days=array('Lundi','Mardi','Mercredi','Jeudi','Vendredi');
         $this->context->smarty->assign('ws_days',$ws_days);
+
+        $this->setMedia();
         return $this->module->display($this->file, 'displayHomeTab.tpl');
     }
     

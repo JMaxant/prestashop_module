@@ -30,7 +30,9 @@ class AdminWeekSpecialsController extends ModuleAdminController
         $allergs=unserialize(Configuration::get('WEEKS_ALLERG'));
         $days=array('Monday','Tuesday','Wednesday','Thursday','Friday'); //FIXME:
         $class='col-sm-'.round(12/$nb_dishes); // allows to throw bootstrap classes depending on the number of dishes
+        $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
 
+        $this->context->smarty->assign('path',$path);
         $this->context->smarty->assign('class',$class);
         $this->context->smarty->assign('nb_dishes',$nb_dishes);
         $this->context->smarty->assign('allergies',$allergs);
@@ -58,7 +60,10 @@ class AdminWeekSpecialsController extends ModuleAdminController
         }
     }
 
-            
+    public function previewProcess()
+    {
+
+    }            
     /**
      * @See Controller.php for more info on run()
      */
