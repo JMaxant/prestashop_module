@@ -41,10 +41,9 @@ class AdminWeekSpecialsController extends ModuleAdminController
                 $courses[]=$course;
             }
             $menu=$input['menu'];
-            // var_dump($menu);
-            // die;
             $menu=serialize($menu);
             $courses=serialize($courses);
+            
             $WeekSpecial=new WeekSpecial();
             $WeekSpecial->courses_weekspecials_menu=$courses;
             $WeekSpecial->array_weekspecials_menu=$menu;
