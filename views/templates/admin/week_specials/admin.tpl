@@ -1,12 +1,11 @@
 <form method="POST" action="" class="defaultForm form-horizontal">
     <section id="sw_step_1" class="panel">
+
         <div class="panel-heading">
             <h2><i class="icon-chevron-right"></i><a href="#step_1" data-toggle="collapse">Step 1 : Setting the type of courses</a></h2>
         </div><!--panel-heading-->
-        {if isset($course)}
-        {$course.0}
-        {/if}
-        <div class="panel-body collapse-in" id="step_1">
+
+        <div class="panel-body collapse in" id="step_1">
             <label class="label control-label col-sm-3">Saisissez ici le type de plats</label>
             <div class="col-sm-9">
                 {for $i=1 to $nb_dishes}
@@ -14,24 +13,13 @@
                 {/for}
             </div>
         </div><!--panel-body-->
-
-        <div class="panel-footer">
-            <button class="btn btn-default pull-right" name="submit_weekspecial_courses" value="1" type="submit">
-                <i class="process-icon-save"></i>Enregistrer
-            </button>
-        </div><!--panel-footer-->
-    </section><!--panel-->
-</form>
-
-<form method="POST" action="" class="defaultForm form-horizontal">
-    <div class="panel">
-
-        <div class="panel-heading">
-            <h2><i class="icon-calendar"></i>&nbsp;<a href="#sw_main_content" data-toggle="collapse">Saisissez ici les plats de la semaine</a></h2>
-        </div>
+        <br/>
     
+        <div class="panel-heading">
+            <h2><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_date" data-toggle="collapse">Step 2 : Select the dates</a></h2>
+        </div><!--panel-heading-->
 
-        <div id="sw_main_content" class="panel-body collapse in">
+        <div id="ws_date" class="panel-body collapse" >
             <div class="form-group">
                 <label class="label control-label col-sm-3">Saisissez ici la date de votre choix</label>
                 <div class="col-sm-9">
@@ -39,7 +27,13 @@
                     <input type="date" name="menu[date][]" />
                 </div>
             </div><!--form-group-->
-            {$course|@var_dump}
+        </div>
+        <br/>
+        <div class="panel-heading">
+            <h2><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_main" data-toggle="collapse">Etape 3 : Saisissez le nom et les détails des plats</a></h2>
+        </div><!--panel-heading-->
+
+        <div id="ws_main" class="panel-body collapse">
             {foreach from=$days item=day name=day}
             <br/>
             <h3><a href="#{$day}" data-toggle="collapse">{$day} <span class="icon-arrow-down"></span></a></h3>

@@ -131,7 +131,6 @@ class WeekSpecials extends Module
         return $controller;
     }
 
-
     // Front
     public function hookDisplayHomeTab($params)
     {
