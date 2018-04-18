@@ -18,7 +18,7 @@
                 <td><strong>{$day|upper}</strong></td>
             {foreach from=$menu.$i item=course}
                 <td>
-                    {$course.name<br/>
+                    {$course.name}<br/>
                     {$course.vg}
                     {$course.pork}
                     {if isset($course.allergene)&&!empty($course.allergene)}

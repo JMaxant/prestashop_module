@@ -14,7 +14,14 @@ class AdminWeekSpecialsController extends ModuleAdminController
 
         parent::__construct();
     }
+    public function setMedia()
+    {
+        parent::setMedia();
 
+        $this->path=__PS_BASE_URI__.'modules/weekspecials/';
+        $this->context->controller->addCSS($this->path.'views/css/styles.css','all');
+        $this->context->controller->addJS($this->path.'views/js/app.js');
+    }
     public function initContent()
     {
         parent::initContent();
@@ -43,7 +50,7 @@ class AdminWeekSpecialsController extends ModuleAdminController
             $menu=$input['menu'];
             $menu=serialize($menu);
             $courses=serialize($courses);
-            
+
             $WeekSpecial=new WeekSpecial();
             $WeekSpecial->courses_weekspecials_menu=$courses;
             $WeekSpecial->array_weekspecials_menu=$menu;

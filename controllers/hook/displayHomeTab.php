@@ -10,6 +10,14 @@ class WeekSpecialsDisplayHomeTabController
         $this->path=$path;
     }
 
+    public function setMedia()
+    {
+        parent::setMedia();
+
+        $this->path=__PS_BASE_URI__.'modules/weekspecials/';
+        $this->context->controller->addCSS($this->path.'views/css/styles.css','all');
+        $this->context->controller->addJS($this->path.'views/js/app.js');
+    }    
         // affichage hook displayHomeTab
     public function run()
     {   
@@ -17,8 +25,7 @@ class WeekSpecialsDisplayHomeTabController
         $req=WeekSpecial::getRows($row);
         $courses=unserialize($req['courses_weekspecials_menu']);
         $output=unserialize($req['array_weekspecials_menu']);
-        $args=array_keys($output);
-        var_dump($output);
+        $args=array_keys($output);;
         foreach($args as $arg){
             if($arg=='date'){
                 $dates=$output[$arg];
