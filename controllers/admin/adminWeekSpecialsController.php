@@ -57,6 +57,7 @@ class AdminWeekSpecialsController extends ModuleAdminController
             $WeekSpecial->courses_weekspecials_menu=$courses;
             $WeekSpecial->array_weekspecials_menu=$menu;
             $WeekSpecial->save();
+            $this->previewTemplate();
         }
     }
 

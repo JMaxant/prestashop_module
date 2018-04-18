@@ -31,7 +31,7 @@
         </tbody>
         <tfooter>
             <tr>
-                <td colspan="4" class="text-center">
+                <td colspan="{$i+1}" class="text-center">
                     N'hésitez pas à contacter nos boutiques pour plus de renseignements !
                 </td>
             </tr>
