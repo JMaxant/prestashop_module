@@ -17,8 +17,8 @@ class WeekSpecialsDisplayHomeTabController
         $req=WeekSpecial::getRows($row);
         $courses=unserialize($req['courses_weekspecials_menu']);
         $output=unserialize($req['array_weekspecials_menu']);
-
         $args=array_keys($output);
+        var_dump($output);
         foreach($args as $arg){
             if($arg=='date'){
                 $dates=$output[$arg];
@@ -30,6 +30,7 @@ class WeekSpecialsDisplayHomeTabController
                 $menu[]=$output[$arg];
             }
         }
+        // var_dump($menu);
         $this->context->smarty->assign('dates',$formatDates);
         $this->context->smarty->assign('menu', $menu);
         $this->context->smarty->assign('courses',$courses);

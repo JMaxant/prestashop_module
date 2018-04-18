@@ -7,7 +7,7 @@
             <tr>
                 <th></th>
                 {foreach from=$courses item=course}
-                <th>{$course}</th>
+                <th>{$course|upper}</th>
                 {/foreach}
             </tr>
         </thead>
@@ -15,7 +15,7 @@
         {capture}{assign "i" 0}{/capture}
         {foreach from=$ws_days item=day}
             <tr>
-                <td><strong>{$day}</strong></td>
+                <td><strong>{$day|upper}</strong></td>
             {foreach from=$menu.$i item=course}
                 <td>
                     {$course.name}<br/>
