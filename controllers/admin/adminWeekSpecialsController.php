@@ -33,31 +33,20 @@ class AdminWeekSpecialsController extends ModuleAdminController
     
     public function postProcess()
     {
-        if(Tools::isSubmit('submit_weekspecial_courses'))
-        {
-            $input=Tools::getValue('courses');
-            foreach($input as $course){
-                $course=$this->module->stripAccents($course);
-                $courses[]=$course;
-            }
-            $this->context->smarty->assign('course', $courses);
-            $courses=serialize($courses);
-            $WeekSpecial=new WeekSpecial();
-            $WeekSpecial->courses_weekspecials_menu=$courses;
-            $WeekSpecial->save();    
-        }
         if(Tools::isSubmit('submit_weekspecials_content'))
         {
             $input=Tools::getAllValues();
+            foreach($input['courses'] as $course){
+                $course=$this->module->stripAccents($course);
+                $courses[]=$course;
+            }
             $menu=$input['menu'];
             $menu=serialize($menu);
+            $courses=serialize($courses);
             $WeekSpecial=new WeekSpecial();
-            $fields=$WeekSpecial->getFields();
-            var_dump($fields);
-            die;
-            // $WeekSpecial=new Weekspecial();
-            // $WeekSpecial->array_weekspecials_menu=$menu;
-            // $WeekSpecial->update();
+            $WeekSpecial->courses_weekspecials_menu=$courses;
+            $WeekSpecial->array_weekspecials_menu=$menu;
+            $WeekSpecial->update();
         }
     }
 

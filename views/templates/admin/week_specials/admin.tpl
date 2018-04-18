@@ -1,5 +1,5 @@
 <form method="POST" action="" class="defaultForm form-horizontal">
-    <section id="sw_step_1" class="panel">
+    <section id="ws_step_1" class="panel">
 
         <div class="panel-heading">
             <h2><i class="icon-chevron-right"></i><a href="#step_1" data-toggle="collapse">Step 1 : Setting the type of courses</a></h2>
