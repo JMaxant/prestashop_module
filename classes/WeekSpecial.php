@@ -18,7 +18,6 @@ class WeekSpecial extends ObjectModel
             'id_weekspecials_menu'=>array(
                 'type'=>SELF::TYPE_INT,
                 'validate'=>'isUnsignedInt',
-                'required'=>true
             ),'courses_weekspecials_menu'=> array(
                 'type'=>self::TYPE_STRING,
                 'validate'=>'isString',
