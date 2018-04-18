@@ -30,7 +30,7 @@ class WeekSpecialsGetContentController
         
     public function defaultConfiguration()
     {
-        if(Tools::isSubmit('submit_weekspecials_defaults'))
+        if(Tools::isSubmit('submit_weekspecial_default'))
         {
             $allergens=serialize(array('Gluten', 'Crustacés', 'Oeufs','Poisson','Arachides','Soja','Lait','Fruits à coque','Céleri','Moutarde','Sésame','Sulfites','Lupin','Mollusques'));
             $nb_dishes=3;
