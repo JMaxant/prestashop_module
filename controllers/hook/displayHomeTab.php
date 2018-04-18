@@ -16,9 +16,9 @@ class WeekSpecialsDisplayHomeTabController
         $this->context->controller->addCSS($this->path.'views/css/styles.css','all');
         $this->context->controller->addJS($this->path.'views/js/app.js');
     }    
-        // affichage hook displayHomeTab
-    public function run()
-    {   
+    // affichage hook displayHomeTab
+    public function assignTemplate()
+    {
         $row='*';
         $req=WeekSpecial::getRows($row);
         $courses=unserialize($req['courses_weekspecials_menu']);
@@ -40,8 +40,12 @@ class WeekSpecialsDisplayHomeTabController
         $this->context->smarty->assign('courses',$courses);
         $ws_days=array('Lundi','Mardi','Mercredi','Jeudi','Vendredi');
         $this->context->smarty->assign('ws_days',$ws_days);
-
+    }
+    public function run()
+    {   
+       
         $this->setMedia();
+        $this->assignTemplate();
         return $this->module->display($this->file, 'displayHomeTab.tpl');
     }
     

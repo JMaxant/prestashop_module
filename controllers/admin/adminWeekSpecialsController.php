@@ -60,16 +60,21 @@ class AdminWeekSpecialsController extends ModuleAdminController
         }
     }
 
-    public function previewProcess()
-    {
-
-    }            
+    // public function previewProcess()
+    // {
+        
+    // }            
     /**
      * @See Controller.php for more info on run()
      */
-
+    public function previewTemplate()
+    {
+        $controller=$this->module->getHookController('displayHomeTab');
+        return $controller->assignTemplate();
+    }
     public function run()
     {
+        $this->previewTemplate();
         parent::run();
     }
     
