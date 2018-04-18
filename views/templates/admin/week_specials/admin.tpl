@@ -16,10 +16,10 @@
         <br/>
     
         <div class="panel-heading">
-            <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_date" data-toggle="collapse">Step 2 : Select the dates</a></h3>
+            <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_step_2" data-toggle="collapse">Step 2 : Select the dates</a></h3>
         </div><!--panel-heading-->
 
-        <div id="ws_step_2" class="panel-body collapse">
+        <div id="ws_step_2" class="panel-body collapse"w>
             <div class="form-group">
                 <label class="label control-label col-sm-3">Saisissez ici la date de votre choix</label>
                 <div class="col-sm-9">
@@ -30,7 +30,7 @@
         </div>
         <br/>
         <div class="panel-heading">
-            <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_main" data-toggle="collapse">Etape 3 : Saisissez le nom et les détails des plats</a></h3>
+            <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_step_3" data-toggle="collapse">Etape 3 : Saisissez le nom et les détails des plats</a></h3>
         </div><!--panel-heading-->
 
         <div id="ws_step_3" class="panel-body collapse">
