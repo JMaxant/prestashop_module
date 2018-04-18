@@ -2,7 +2,7 @@
     <section id="ws_step_1" class="panel">
 
         <div class="panel-heading">
-            <h2><i class="icon-chevron-right"></i><a href="#step_1" data-toggle="collapse">Step 1 : Setting the type of courses</a></h2>
+            <h3><i class="icon-chevron-right"></i><a href="#step_1" data-toggle="collapse">Step 1 : Setting the type of courses</a></h3>
         </div><!--panel-heading-->
 
         <div class="panel-body collapse in" id="step_1">
@@ -16,7 +16,7 @@
         <br/>
     
         <div class="panel-heading">
-            <h2><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_date" data-toggle="collapse">Step 2 : Select the dates</a></h2>
+            <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_date" data-toggle="collapse">Step 2 : Select the dates</a></h3>
         </div><!--panel-heading-->
 
         <div id="ws_date" class="panel-body collapse" >
@@ -30,7 +30,7 @@
         </div>
         <br/>
         <div class="panel-heading">
-            <h2><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_main" data-toggle="collapse">Etape 3 : Saisissez le nom et les détails des plats</a></h2>
+            <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_main" data-toggle="collapse">Etape 3 : Saisissez le nom et les détails des plats</a></h3>
         </div><!--panel-heading-->
 
         <div id="ws_main" class="panel-body collapse">
@@ -61,7 +61,62 @@
                 <i class="process-icon-save"></i>Enregistrer
             </button>
         </div> <!--panel-footer-->
-    </div><!--panel-->
+    </section><!--panel-->
 </form>
+{*Preview*}
+
+<section class="panel">
+    <div class="panel-header">
+        <h3><i class="icon-desktop"></i>&nbsp;Prévisualisation en direct</h3>
+    </div>
+    
+    <div class="panel-body back_back">
+
+        <h3 style="background:#C6AEA4;padding:20px 0;color:#fff!important;margin:auto!important;">QU'EST-CE QU'ON MANGE CETTE SEMAINE ?</h3>
+
+        <table class="table-bordered table_previ">
+            <thead>
+                <tr>
+                    <th class="semaine"></th>
+                    <th class="table_back"><span style="font-size:24px;color:#C49D42;">ENTRÉE</span></th>
+                    <th class="tablee_back"><span style="font-size:24px;color:#C49D42;">SALADE</span></th>
+                    <th class="tablee_back"><span style="font-size:24px;color:#C49D42;">PLAT</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">Lundi</th>
+                    <td class="table_back"><p id="visuel_entree_lundi"> </p></td>
+                    <td class="table_back"><span id="visuel_salade_lundi"></span></td>
+                    <td class="table_back"><span id="visuel_plat_lundi"></span></td>
+                </tr>
+                <tr>
+                <th scope="row">Mardi</th>
+                    <td class="table_back"><p id="visuel_entree_mardi"></p></td>
+                    <td class="table_back"><span id="visuel_salade_mardi"></span></td>
+                    <td class="table_back"><span id="visuel_plat_mardi"></span></td>
+                </tr>
+                <tr>
+                <th scope="row">Mercredi</th>
+                    <td class="table_back"><p id="visuel_entree_mercredi"></p></td>
+                    <td class="table_back"><span id="visuel_salade_mercredi"></span></td>
+                    <td class="table_back"><span id="visuel_plat_mercredi"></span></td>
+                </tr>
+                <tr>
+                <th scope="row">Jeudi</th>
+                    <td class="table_back"><p id="visuel_entree_jeudi"></p></td>
+                    <td class="table_back"><span id="visuel_salade_jeudi"></span></td>
+                    <td class="table_back"><span id="visuel_plat_jeudi"></span></td>
+                </tr>
+                <tr>
+                <th scope="row">Vendredi</th>
+                    <td class="table_back"><p id="visuel_entree_vendredi"></p></td>
+                    <td class="table_back"><span id="visuel_salade_vendredi"></span></td>
+                    <td class="table_back"><span id="visuel_plat_vendredi"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
 
 {debug}

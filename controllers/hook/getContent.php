@@ -49,8 +49,8 @@ class WeekSpecialsGetContentController
         // $this->context->smarty->assign('courses',$courses);
         // $this->assignTemplate();
         // $this->hookDisplayHomeTab();
-        // $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
-        // $this->context->smarty->assign('path',$path);
+        $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
+        $this->context->smarty->assign('path',$path);
         // $this->processForms();
            
            

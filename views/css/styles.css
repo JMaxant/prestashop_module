@@ -1,0 +1,72 @@
+#content.bootstrap h3:not(.modal-title), #content.bootstrap .panel-heading{
+	padding:0!important;
+	margin:0!important;
+}
+h2{
+	width:80%;
+}
+
+
+.back_back{
+	background:url('http://localhost/prestashop_essai/img/back.jpg')no-repeat center center;
+	height:600px;
+	display:flex;
+	align-items:center;
+	padding:5px;
+	max-width:80%;
+	margin:auto;
+}
+.table_back{
+	width:30%!important;
+	text-align:center!important;
+	font-size:16px;
+	padding:10px 0;
+}
+.table_previ{
+	width:80%;
+	margin:35px auto;
+}
+
+th{
+	text-align:center!important;
+	font-size:16px!important;
+	padding:20px 0!important;
+	background:rgba(255,255,255,0.7);
+}
+td{
+	background:rgba(198,174,165,0.5);
+	color:#fff;
+	padding:20px 0!important;
+}
+td p, td span{
+	font-size:20px;
+	font-weight:600;
+	font-style:italic;
+	background:rgba(198,174,165,0.4);
+}
+.semaine{
+	visibility:hidden;
+}
+/*ça c'est lfront !!!! */
+.back_bla{
+	background:url('http://localhost/prestashop_essai/img/back.jpg')center center!important;
+	height:600px;
+	display:flex;
+	align-items:center;
+	padding:15px;
+	width:100%;
+}
+.table_front{
+	width:30%!important;
+	text-align:center!important;
+	font-size:16px;
+	padding:10px 0;
+}
+.table_home{
+	width:100%;
+	margin:35px auto;
+}
+
+.titre_front{
+	width:100%;
+}
