@@ -6,9 +6,9 @@
         <thead>
             <tr>
                 <th></th>
-                <th>L'Entrée</th>
-                <th>La Salade</th>
-                <th>Le Plat</th>
+                {foreach from=$courses item=course}
+                <th>{$course}</th>
+                {/foreach}
             </tr>
         </thead>
         <tbody>
