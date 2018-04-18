@@ -40,13 +40,13 @@
             <div id="{$day}" class="form-group collapse {if $smarty.foreach.day.first}in{/if}">
                 {for $i=1 to $nb_dishes}
                 <div class="{$class}">
-                    <label><span class="text-capitalize">{$course[$i-1]}</span></label>
-                    <textarea name="menu[{$day|lower}][{$course[$i-1]|lower}][name]"></textarea>
+                    <label><span class="text-capitalize">WIP</span></label>
+                    <textarea name="menu[{$day|lower}][{$i}]name"></textarea>
                     <label>Vegetarian dish</label>
-                    <input type="checkbox" name="menu[{$day|lower}][{$course[$i-1]|lower}][vg]"  value="1"/>
+                    <input type="checkbox" name="menu[{$day|lower}][{$i}]vg"  value="1"/>
                     <label>Porkfree dish</label>
-                    <input type="checkbox" name="menu[{$day|lower}][{$course[$i-1]|lower}][pork]" value="1"  />
-                    <select id="allergenes" name="menu[{$day|lower}][{$course[$i-1]|lower}][allergene][]" multiple>
+                    <input type="checkbox" name="menu[{$day|lower}][{$i}]pork" value="1"  />
+                    <select id="allergenes" name="menu[{$day|lower}][{$i}][allergene][]" multiple>
                         {foreach from=$allergies item=allergene}
                             <option value="{$allergene}">{$allergene}</option>
                         {/foreach}
