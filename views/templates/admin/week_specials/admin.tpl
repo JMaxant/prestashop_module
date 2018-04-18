@@ -19,7 +19,7 @@
             <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_step_2" data-toggle="collapse">Step 2 : Select the dates</a></h3>
         </div><!--panel-heading-->
 
-        <div id="ws_step_2" class="panel-body collapse"w>
+        <div id="ws_step_2" class="panel-body collapse">
             <div class="form-group">
                 <label class="label control-label col-sm-3">Saisissez ici la date de votre choix</label>
                 <div class="col-sm-9">
