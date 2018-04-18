@@ -40,7 +40,7 @@
             <div id="{$day}" class="form-group collapse {if $smarty.foreach.day.first}in{/if}">
                 {for $i=1 to $nb_dishes}
                 <div class="{$class}">
-                    <label><span class="text-capitalize">WIP</span></label>
+                    <label><span class="text-capitalize" id="label_{$i}">WIP</span></label>
                     <textarea name="menu[{$day|lower}][{$i}][name]"></textarea>
                     <label>Vegetarian dish</label>
                     <input type="checkbox" name="menu[{$day|lower}][{$i}][vg]"  value="1"/>
