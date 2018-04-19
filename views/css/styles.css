@@ -7,7 +7,7 @@
     padding:20px 0;
     color:#fff!important;
     margin:auto!important;
-    width:100%;
+    width:80%;
     text-align: center;
 }
 .ws_input_dishes{
@@ -15,7 +15,7 @@
     max-width: 30%;
 }
 .ws_content_render{
-	background:url('http://localhost/prestashop_essai/img/back.jpg')no-repeat center center;
+	background:url('../img/background_table.jpg')no-repeat center center;
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
