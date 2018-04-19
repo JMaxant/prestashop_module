@@ -9,12 +9,12 @@
             <label class="label control-label col-sm-3">Saisissez ici le type de plats</label>
             <div class="col-sm-9">
                 {for $i=1 to $nb_dishes}
-                <input type="text" name="courses[{$i}]" class="{$class} ws_input_dishes" /> {*TODO:CSS TAILLE INPUT width:inherit +*}
+                <input type="text" name="courses[{$i}]" class="{$class} ws_input_dishes" />
                 {/for}
             </div>
         </div><!--panel-body-->
         <br/>
-    
+
         <div class="panel-heading">
             <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_step_2" data-toggle="collapse">Step 2 : Select the dates</a></h3>
         </div><!--panel-heading-->
@@ -40,13 +40,13 @@
             <div id="{$day}" class="form-group collapse {if $smarty.foreach.day.first}in{/if}">
                 {for $i=1 to $nb_dishes}
                 <div class="{$class}">
-                    <label><span class="text-capitalize" id="label_{$i}">WIP</span></label>
+                    <label><span class="courses[{$i}]"></span></label>
                     <textarea name="menu[{$day|lower}][{$i}][name]"></textarea>
                     <label>Vegetarian dish</label>
                     <input type="checkbox" name="menu[{$day|lower}][{$i}][vg]"  value="1"/>
                     <label>Porkfree dish</label>
                     <input type="checkbox" name="menu[{$day|lower}][{$i}][pork]" value="1"  />
-                    <select id="allergenes" name="menu[{$day|lower}][{$i}][allergene][]" multiple>
+                    <select class="allergenes" name="menu[{$day|lower}][{$i}][allergene][]" multiple>
                         {foreach from=$allergies item=allergene}
                             <option value="{$allergene}">{$allergene}</option>
                         {/foreach}
@@ -79,5 +79,6 @@
     </div>
 </section>
 {*Template editor*}
+
 
 {debug}
