@@ -43,10 +43,7 @@ class WeekSpecialsGetContentController
         // Affichage back
     public function run()
     {
-        // $this->assignTemplate();
-        // $this->hookDisplayHomeTab();
-           
-           
+         
         $this->defaultConfiguration();
         $this->processConfiguration();
         $html_form=$this->renderForm();
