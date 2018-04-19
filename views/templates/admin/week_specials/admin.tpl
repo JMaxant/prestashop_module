@@ -9,7 +9,7 @@
             <label class="label control-label col-sm-3">Saisissez ici le type de plats</label>
             <div class="col-sm-9">
                 {for $i=1 to $nb_dishes}
-                <input type="text" name="courses[{$i}]" class="{$class} ws_input_dishes" />
+                <input data-attribute="courses_{$i}" type="text" name="courses[{$i}]" class="{$class} ws_input_dishes" />
                 {/for}
             </div>
         </div><!--panel-body-->
@@ -29,10 +29,10 @@
             </div><!--form-group-->
         </div>
         <br/>
+        <p class="coucou"></p>
         <div class="panel-heading">
             <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_step_3" data-toggle="collapse">Etape 3 : Saisissez le nom et les détails des plats</a></h3>
         </div><!--panel-heading-->
-
         <div id="ws_step_3" class="panel-body collapse">
             {foreach from=$days item=day name=day}
             <br/>
@@ -40,7 +40,7 @@
             <div id="{$day}" class="form-group collapse {if $smarty.foreach.day.first}in{/if}">
                 {for $i=1 to $nb_dishes}
                 <div class="{$class}">
-                    <label><span class="courses[{$i}]"></span></label>
+                    <label class="courses_{$i}"></label>
                     <textarea name="menu[{$day|lower}][{$i}][name]"></textarea>
                     <label>Vegetarian dish</label>
                     <input type="checkbox" name="menu[{$day|lower}][{$i}][vg]"  value="1"/>
