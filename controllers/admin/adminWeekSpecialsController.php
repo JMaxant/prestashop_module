@@ -19,9 +19,20 @@ class AdminWeekSpecialsController extends ModuleAdminController
         parent::setMedia();
 
         $this->path=__PS_BASE_URI__.'modules/weekspecials/';
+
+        // style and script for code mirror
+        
+        $this->context->controller->addCSS($this->path.'views/js/codemirror/lib/codemirror.css','all');
+        $this->context->controller->addJS($this->path.'views/js/codemirror/lib/CodeMirror.js');
+        $this->context->controller->addJS($this->path.'views/js/codemirror/mode/css/css.js');
+        $this->context->controller->addJS($this->path.'views/js/codemirror/mode/smarty/smarty.js');
+
         $this->context->controller->addCSS($this->path.'views/css/styles.css','all');
         $this->context->controller->addJS($this->path.'views/js/app.js');
+
+        
     }
+
     public function initContent()
     {
         parent::initContent();
@@ -61,18 +72,20 @@ class AdminWeekSpecialsController extends ModuleAdminController
         }
     }
 
-    // public function previewProcess()
-    // {
-        
-    // }            
-    /**
-     * @See Controller.php for more info on run()
-     */
+         
     public function previewTemplate()
     {
         $controller=$this->module->getHookController('displayHomeTab');
         return $controller->assignTemplate();
     }
+
+    // public function editTemplate()
+    // {
+
+    // }
+    /**
+     * @See Controller.php for more info on run() (basically handles everything if fed the right input)
+     */
     public function run()
     {
         $this->previewTemplate();

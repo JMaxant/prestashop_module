@@ -42,8 +42,7 @@ class WeekSpecialsGetContentController
 
         // Affichage back
     public function run()
-    {
-         
+    { 
         $this->defaultConfiguration();
         $this->processConfiguration();
         $html_form=$this->renderForm();

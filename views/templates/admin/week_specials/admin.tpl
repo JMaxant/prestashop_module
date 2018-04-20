@@ -110,4 +110,3 @@
         </button>
     </div>
 </section>
-{debug}
