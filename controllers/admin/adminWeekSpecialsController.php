@@ -22,10 +22,10 @@ class AdminWeekSpecialsController extends ModuleAdminController
 
         // style and script for code mirror
         
-        $this->context->controller->addCSS($this->path.'views/js/codemirror/lib/codemirror.css','all');
-        $this->context->controller->addJS($this->path.'views/js/codemirror/lib/codemirror.js');
-        $this->context->controller->addJS($this->path.'views/js/codemirror/mode/css/css.js');
-        $this->context->controller->addJS($this->path.'views/js/codemirror/mode/smarty/smarty.js');
+        // $this->context->controller->addCSS($this->path.'views/js/codemirror/lib/codemirror.css','all');
+        // $this->context->controller->addJS($this->path.'views/js/codemirror/lib/codemirror.js');
+        // $this->context->controller->addJS($this->path.'views/js/codemirror/mode/css/css.js');
+        // $this->context->controller->addJS($this->path.'views/js/codemirror/mode/smarty/smarty.js');
 
         $this->context->controller->addCSS($this->path.'views/css/styles.css','all');
         $this->context->controller->addJS($this->path.'views/js/app.js');
