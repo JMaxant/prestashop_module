@@ -79,5 +79,35 @@
 </section>
 {*Template editor*}
 
+<section class="panel" id="edit">
+    <div class="panel-header">
+        <h3><i class="icon-cogs"></i>&nbsp;Edition du template</h3>
+    </div>
 
+    <div class="alert alert-danger">
+        <p>blablablabla</p>
+    </div>
+
+    <div class="panel-body">
+        <textarea id="codeMirror_smarty">
+        </textarea>
+
+    </div><!--panel-body-->
+    <div class="panel-footer">
+        <button class="btn btn-default pull-right" name="submit_weekspecials_edit_smarty" value="1" type="submit">
+            <i class="process-icon-save"></i>Enregistrer
+        </button>
+    </div>
+
+    <div class="panel-body">
+        <textarea id="codeMirror_css">
+        </textarea>
+    </div><!--panel-body-->
+
+    <div class="panel-footer">
+        <button class="btn btn-default pull-right" name="submit_weekspecials_edit_css" value="1" type="submit">
+            <i class="process-icon-save"></i>Enregistrer
+        </button>
+    </div>
+</section>
 {debug}

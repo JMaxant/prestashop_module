@@ -15,7 +15,7 @@
         {foreach from=$ws_days item=day}
             <tr>
                 <th scope="row">{$day|upper}</th>
-            {foreach from=$menu.$i item=course}
+                {foreach from=$menu.$i item=course}
                 <td class="table_render">
                     {$course.name}<br/>
                     {if isset($course.vg)&&($course.vg eq 1)}
@@ -28,17 +28,17 @@
                         <p title="Contient des {foreach from=$course.allergene item=allergene}{$allergene} {/foreach} "><small>Informations allergènes</small></p>
                     {/if}
                 </td>
-            {/foreach}
-                {capture}{$i++}{/capture}
+                {/foreach}
+        {capture}{$i++}{/capture}
             </tr>
         {/foreach}
         </tbody>
-        <tfooter>
+        <tfoot>
             <tr>
                 <td colspan="{$i+1}" class="text-center">
                     N'hésitez pas à contacter nos boutiques pour plus de renseignements !
                 </td>
             </tr>
-        </tfooter>
+        </tfoot>
     </table>
 </section>
