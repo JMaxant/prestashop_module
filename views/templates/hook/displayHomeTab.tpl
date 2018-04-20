@@ -18,8 +18,12 @@
             {foreach from=$menu.$i item=course}
                 <td class="table_render">
                     {$course.name}<br/>
-                    {$course.vg}
-                    {$course.pork}
+                    {if isset($course.vg)&&($course.vg eq 1)}
+                        <img src="..." alt="..." title="Plat végétarien" />
+                    {/if}
+                    {if isset($course.pork)&&($course.pork eq 1)}
+                        <img src="..." alt="..." title="Plat sans porc" />
+                    {/if}
                     {if isset($course.allergene)&&!empty($course.allergene)}
                         <p title="Contient des {foreach from=$course.allergene item=allergene}{$allergene} {/foreach} "><small>Informations allergènes</small></p>
                     {/if}
