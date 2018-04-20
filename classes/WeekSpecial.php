@@ -31,7 +31,7 @@ class WeekSpecial extends ObjectModel
     public static function getRows($row)
     {
         $req=Db::getInstance()->getRow('
-        SELECT `'.$row.'` 
+        SELECT '.$row.' 
         FROM `'._DB_PREFIX_.'weekspecials` 
         ORDER BY `id_weekspecials_menu` DESC');
 
