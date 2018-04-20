@@ -38,7 +38,7 @@ class WeekSpecialsDisplayHomeTabController
         $this->context->smarty->assign('dates',$formatDates);
         $this->context->smarty->assign('menu', $menu);
         $this->context->smarty->assign('courses',$courses);
-        $ws_days=array('Lundi','Mardi','Mercredi','Jeudi','Vendredi');
+        $ws_days=array('Lundi','Mardi','Mercredi','Jeudi','Vendredi'); //FIXME:
         $this->context->smarty->assign('ws_days',$ws_days);
     }
     public function run()

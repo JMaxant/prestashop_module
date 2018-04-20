@@ -78,7 +78,7 @@
     </div>
 </section>
 {*Template editor*}
-
+{if (isset($tpl_edit))&&($tpl_edit eq 1)}
 <section class="panel" id="edit">
     <div class="panel-header">
         <h3><i class="icon-cogs"></i>&nbsp;Edition du template</h3>
@@ -110,3 +110,4 @@
         </button>
     </div>
 </section>
+{/if}

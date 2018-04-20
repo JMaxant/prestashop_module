@@ -23,7 +23,7 @@ class AdminWeekSpecialsController extends ModuleAdminController
         // style and script for code mirror
         
         $this->context->controller->addCSS($this->path.'views/js/codemirror/lib/codemirror.css','all');
-        $this->context->controller->addJS($this->path.'views/js/codemirror/lib/CodeMirror.js');
+        $this->context->controller->addJS($this->path.'views/js/codemirror/lib/codemirror.js');
         $this->context->controller->addJS($this->path.'views/js/codemirror/mode/css/css.js');
         $this->context->controller->addJS($this->path.'views/js/codemirror/mode/smarty/smarty.js');
 
@@ -37,12 +37,14 @@ class AdminWeekSpecialsController extends ModuleAdminController
     {
         parent::initContent();
         
+        $tpl_edit=Configuration::get('WEEKS_TEMPLATE');
         $nb_dishes=Configuration::get('WEEKS_DISHES');
         $allergs=unserialize(Configuration::get('WEEKS_ALLERG'));
         $days=array('Monday','Tuesday','Wednesday','Thursday','Friday'); //FIXME:
         $class='col-sm-'.round(12/$nb_dishes); // allows to throw bootstrap classes depending on the number of dishes
         $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
 
+        $this->context->smarty->assign('tpl_edit', $tpl_edit);
         $this->context->smarty->assign('path',$path);
         $this->context->smarty->assign('class',$class);
         $this->context->smarty->assign('nb_dishes',$nb_dishes);
