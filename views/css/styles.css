@@ -56,3 +56,6 @@ th.table_render span{
 	color:#fff;
 	padding:20px 0!important;
 }
+.index .ws_content_render small{
+    font-size:60%;
+}

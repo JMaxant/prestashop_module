@@ -20,13 +20,6 @@ class AdminWeekSpecialsController extends ModuleAdminController
 
         $this->path=__PS_BASE_URI__.'modules/weekspecials/';
 
-        // style and script for code mirror
-        
-        // $this->context->controller->addCSS($this->path.'views/js/codemirror/lib/codemirror.css','all');
-        // $this->context->controller->addJS($this->path.'views/js/codemirror/lib/codemirror.js');
-        // $this->context->controller->addJS($this->path.'views/js/codemirror/mode/css/css.js');
-        // $this->context->controller->addJS($this->path.'views/js/codemirror/mode/smarty/smarty.js');
-
         $this->context->controller->addCSS($this->path.'views/css/styles.css','all');
         $this->context->controller->addJS($this->path.'views/js/app.js');
 
@@ -44,7 +37,6 @@ class AdminWeekSpecialsController extends ModuleAdminController
         $class='col-sm-'.round(12/$nb_dishes); // allows to throw bootstrap classes depending on the number of dishes
         $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
 
-        $this->context->smarty->assign('tpl_edit', $tpl_edit);
         $this->context->smarty->assign('path',$path);
         $this->context->smarty->assign('class',$class);
         $this->context->smarty->assign('nb_dishes',$nb_dishes);
@@ -81,10 +73,6 @@ class AdminWeekSpecialsController extends ModuleAdminController
         return $controller->assignTemplate();
     }
 
-    // public function editTemplate()
-    // {
-
-    // }
     /**
      * @See Controller.php for more info on run() (basically handles everything if fed the right input)
      */

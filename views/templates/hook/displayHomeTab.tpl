@@ -25,7 +25,7 @@
                         <img src="..." alt="..." title="Plat sans porc" />
                     {/if}
                     {if isset($course.allergene)&&!empty($course.allergene)}
-                        <p title="Contient des {foreach from=$course.allergene item=allergene}{$allergene} {/foreach} "><small>Informations allergènes</small></p>
+                        <p class="pull-right" title="Contient des {foreach from=$course.allergene item=allergene}{$allergene} {/foreach} "><small>Informations allergènes</small></p>
                     {/if}
                 </td>
                 {/foreach}

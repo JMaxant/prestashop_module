@@ -1,11 +1,5 @@
 <?php
 
-/*
-*TODO: preview
-*TODO: lien vers page formules
-*TODO: controller admin
-*FIXME: preview
-*/
 require_once(dirname(__FILE__).'/classes/WeekSpecial.php');
 
 class WeekSpecials extends Module
@@ -18,6 +12,7 @@ class WeekSpecials extends Module
         $this->tab='front_office_features';
         $this->version='0.1.0';
         $this->author='Julien Maxant & Sarah Gilbert';
+        $this->path=__FILE__;
 
         $this->displayName=$this->l('This Week\'s Specials');
         $this->description=$this->l('Allows displaying special dishes for the upcoming week');
