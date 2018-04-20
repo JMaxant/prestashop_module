@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>weekspecials</name>
+	<displayName><![CDATA[This Week&#039;s Specials]]></displayName>
+	<version><![CDATA[0.1.0]]></version>
+	<description><![CDATA[Allows displaying special dishes for the upcoming week]]></description>
+	<author><![CDATA[Julien Maxant & Sarah Gilbert]]></author>
+	<tab><![CDATA[front_office_features]]></tab>
+	<is_configurable>1</is_configurable>
+	<need_instance>1</need_instance>
+	<limited_countries></limited_countries>
+</module>

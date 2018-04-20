@@ -29,7 +29,6 @@
             </div><!--form-group-->
         </div>
         <br/>
-        <p class="coucou"></p>
         <div class="panel-heading">
             <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_step_3" data-toggle="collapse">Etape 3 : Saisissez le nom et les détails des plats</a></h3>
         </div><!--panel-heading-->
