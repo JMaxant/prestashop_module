@@ -28,10 +28,10 @@ class WeekSpecial extends ObjectModel
         ),
     );
 
-    public static function getRows($row)
+    public static function getAll()
     {
         $req=Db::getInstance()->getRow('
-        SELECT '.$row.' 
+        SELECT * 
         FROM `'._DB_PREFIX_.'weekspecials` 
         ORDER BY `id_weekspecials_menu` DESC');
 

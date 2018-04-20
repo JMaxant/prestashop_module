@@ -19,8 +19,7 @@ class WeekSpecialsDisplayHomeTabController
     // affichage hook displayHomeTab
     public function assignTemplate()
     {
-        $row='*';
-        $req=WeekSpecial::getRows($row);
+        $req=WeekSpecial::getAll();
         $courses=unserialize($req['courses_weekspecials_menu']);
         $output=unserialize($req['array_weekspecials_menu']);
         $args=array_keys($output);;
