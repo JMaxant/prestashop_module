@@ -35,8 +35,8 @@ class AdminWeekSpecialsController extends ModuleAdminController
         $ws_days=$this->module->days;
         $class='col-sm-'.round(12/$nb_dishes); // allows to throw bootstrap classes depending on the number of dishes
         $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
-        $module_dir='/prestashop/weekspecials/'; //FIXME:invalid path using $module_dir, current setting is a workaround
-
+        $module_dir=$this->path;
+        
         $this->context->smarty->assign('module_dir', $module_dir);
         $this->context->smarty->assign('path',$path);
         $this->context->smarty->assign('class',$class);

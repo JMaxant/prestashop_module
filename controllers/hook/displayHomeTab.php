@@ -17,7 +17,7 @@ class WeekSpecialsDisplayHomeTabController
         $this->context->controller->addJS($this->path.'views/js/app.js');
     }    
     // affichage hook displayHomeTab
-    public function assignTemplate()
+    public function assignTemplate() //FIXME:
     {
         $req=WeekSpecial::getAll();
         $courses=unserialize($req['courses_weekspecials_menu']);
