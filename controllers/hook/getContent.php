@@ -16,11 +16,11 @@ class WeekSpecialsGetContentController
         if(Tools::isSubmit('submit_weekspecials_config'))
         {
             $allergens=unserialize(Configuration::get('WEEKS_ALLERG'));
-            $enable_template=Tools::getValue('template');
+            // $enable_template=Tools::getValue('template');
             $nb_dishes=Tools::getValue('dishes');
             $allergens[]=Tools::getValue('allergens');
             $allergens=serialize($allergens);
-            Configuration::updateValue('WEEKS_TEMPLATE', $enable_template);
+            // Configuration::updateValue('WEEKS_TEMPLATE', $enable_template);
             Configuration::updateValue('WEEKS_DISHES', $nb_dishes);
             Configuration::updateValue('WEEKS_ALLERG', $allergens);
             $this->context->smarty->assign('confirmation','true');
@@ -62,23 +62,24 @@ class WeekSpecialsGetContentController
                     'icon' =>'icon-wrench'
                 ),
                 'input'=>array(
+                    // array(
+                    //     'type'=>'switch',
+                    //     'label'=>$this->module->l('Enable Template Editor'),
+                    //     'name'=>'template',
+                    //     'desc'=>$this->module->l('Enables edition of the template'),
+                    //     'values'=>array(
+                    //         array(
+                    //             'id'=>'template_1',
+                    //             'value'=>1,
+                    //             'label'=>$this->module->l('Enabled'),
+                    //         ), array(
+                    //             'id'=>'template_0',
+                    //             'value'=>0,
+                    //             'label'=>$this->module->l('Disabled'),
+                    //         )
+                    //     ),
+                    // ), 
                     array(
-                        'type'=>'switch',
-                        'label'=>$this->module->l('Enable Template Editor'),
-                        'name'=>'template',
-                        'desc'=>$this->module->l('Enables edition of the template'),
-                        'values'=>array(
-                            array(
-                                'id'=>'template_1',
-                                'value'=>1,
-                                'label'=>$this->module->l('Enabled'),
-                            ), array(
-                                'id'=>'template_0',
-                                'value'=>0,
-                                'label'=>$this->module->l('Disabled'),
-                            )
-                        ),
-                    ), array(
                         'type'=>'select',
                         'label'=>$this->module->l('Select the number of courses'),
                         'name'=>'dishes',

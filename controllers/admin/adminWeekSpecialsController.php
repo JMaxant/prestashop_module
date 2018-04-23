@@ -79,6 +79,7 @@ class AdminWeekSpecialsController extends ModuleAdminController
     public function run()
     {
         $this->previewTemplate();
+        
         parent::run();
     }
     

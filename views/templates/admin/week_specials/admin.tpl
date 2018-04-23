@@ -69,10 +69,10 @@
     <div class="panel-heading">
         <h3><i class="icon-desktop"></i>&nbsp;Prévisualisation en direct</h3>
     </div>
-    {* <div class="alert alert-info">
+    <div class="alert alert-info">
         <p>Attention : le résultat de la prévisualisation ne sera visible qu'aprés avoir envoyé le formulaire ci-dessus.</p>
         <p>Des différences mineures, notamment sur les polices et leurs tailles, peuvent apparaitre entre la prévisualisation et le rendu sur la page d'accueil : c'est à cause du style chargé dans le back-office</p>
-    </div> *}
+    </div>
     <div id="preview" class="panel-body">
         {include file="$path"}
     </div>

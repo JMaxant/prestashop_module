@@ -78,7 +78,7 @@ class WeekSpecials extends Module
     public function defaultConfiguration(){
         $allergens=serialize(array('Gluten', 'Crustacés', 'Oeufs','Poisson','Arachides','Soja','Lait','Fruits à coque','Céleri','Moutarde','Sésame','Sulfites','Lupin','Mollusques'));
         Configuration::updateValue('WEEKS_DISHES','3');
-        Configuration::updateValue('WEEKS_TEMPLATE','0');
+        // Configuration::updateValue('WEEKS_TEMPLATE','0');
         Configuration::updateValue('WEEKS_ALLERG',$allergens);
     }
     
