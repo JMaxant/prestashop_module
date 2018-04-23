@@ -26,9 +26,13 @@ class WeekSpecialsDisplayHomeTabController
         foreach($args as $arg){
             if($arg=='date'){
                 $dates=$output[$arg];
-                foreach($dates as $date){
-                    $date=explode('-',$date);
-                    $formatDates[]=$date[2].'/'.$date[1].'/'.$date[0];
+                // var_dump($dates);
+                // die;
+                if(!empty($dates[0])&&!empty($dates[1])){
+                    foreach($dates as $date){
+                        $date=explode('-',$date);
+                        $formatDates[]=$date[2].'/'.$date[1].'/'.$date[0];
+                    }
                 }
             }else{
                 $menu[]=$output[$arg];

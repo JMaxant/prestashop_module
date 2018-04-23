@@ -1,6 +1,8 @@
 <section class="col-sm-12 ws_content_render">
     <h2 class="text-center">Les recettes de la semaine</h2>
+{if isset($dates)}
     <h3 class="text-center">du {$dates.0} au {$dates.1}</h3>
+{/if}
     <table class="table table-bordered preview">
         <thead>
             <tr>
