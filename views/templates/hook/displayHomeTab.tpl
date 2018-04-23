@@ -19,10 +19,10 @@
                 <td class="table_render">
                     <p>{$course.name}</p><br/>
                     {if isset($course.vg)&&($course.vg eq 1)}
-                        <img src="..." alt="..." title="Plat végétarien" />
+                        <img class="picto" src="{$module_dir}views/img/veg.png" alt="Plat végétarien" title="Plat végétarien" />
                     {/if}
                     {if isset($course.pork)&&($course.pork eq 1)}
-                        <img src="..." alt="..." title="Plat sans porc" />
+                        <img class="picto" src="{$module_dir}views/img/pork.png" alt="Plat sans porc" title="Plat sans porc" />
                     {/if}
                     {if isset($course.allergene)&&!empty($course.allergene)}
                         <p title="Contient des {foreach from=$course.allergene item=allergene}{$allergene} {/foreach} "><small>Informations allergènes</small></p>

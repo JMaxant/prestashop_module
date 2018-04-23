@@ -44,6 +44,9 @@ th.table_render span{
     font-size:24px;
     color:#C49D42;
 }
+.picto{
+    max-width: 25px;
+}
 /*Back office*/
 .ps_back-office .preview{
     height: 100vh;
