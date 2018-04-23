@@ -120,25 +120,3 @@ class WeekSpecialsGetContentController
     }
 
 }
-        // }    
-        //     // Submit template modifications && display .tpl content in textarea
-        // public function assignTemplate()
-        // {
-        //     $path=_PS_MODULE_DIR_.'weekspecials/views/templates/hook/displayHomeTab.tpl';
-        //     $tpl=file_get_contents($path);
-        //     if(Tools::isSubmit('submit_weekspecials_template'))
-        //     {
-        //         $tpl=Tools::getValue('template');
-        //         $file=fopen($path, 'w+');
-        //         fwrite($file,$tpl);
-        //         fclose($file);
-        //     } 
-        //     elseif(Tools::isSubmit('submit_weekspecials_reset'))
-        //     {
-        //         $tpl=file_get_contents(_PS_MODULE_DIR_.'weekspecials/displayHomeTab.bak.tpl');
-        //         $file=fopen($path,'w+');
-        //         fwrite($file, $tpl);
-        //         fclose($file);            
-        //     }
-        //     $this->context->smarty->assign('tpl',$tpl);
-        // }

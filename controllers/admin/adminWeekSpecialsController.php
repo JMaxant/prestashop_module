@@ -40,7 +40,7 @@ class AdminWeekSpecialsController extends ModuleAdminController
         $this->context->smarty->assign('path',$path);
         $this->context->smarty->assign('class',$class);
         $this->context->smarty->assign('nb_dishes',$nb_dishes);
-        $this->context->smarty->assign('allergies',$allergs);
+        $this->context->smarty->assign('allergs',$allergs);
         $this->context->smarty->assign('days',$days);
         
     }
@@ -62,6 +62,7 @@ class AdminWeekSpecialsController extends ModuleAdminController
             $WeekSpecial->courses_weekspecials_menu=$courses;
             $WeekSpecial->array_weekspecials_menu=$menu;
             $WeekSpecial->save();
+            
             $this->previewTemplate();
         }
     }

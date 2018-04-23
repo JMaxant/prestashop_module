@@ -17,7 +17,7 @@
     <form method="POST" action="" class="defaultForm form-horizontal">
         <div class="panel-header">
             <div class="panel-body">
-                <div class="col-sm-8 alert alert-warning">
+                <div class="col-sm-12 alert alert-warning">
                     <p>En cliquant sur le bouton ci-dessous, vous remettrez les paramètres de configuration du module à leurs réglages par défaut.<br/>
                     Les allergènes seront remis à leur valeur par défaut.
                     </p>
