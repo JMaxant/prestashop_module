@@ -1,8 +1,9 @@
 <form method="POST" action="" class="defaultForm form-horizontal">
-    <section id="ws_step_1" class="panel">
+
+    <section id="ws_back-office" class="panel">
 
         <div class="panel-heading">
-            <h3><i class="icon-chevron-right"></i><a href="#ws_step_1" data-toggle="collapse">Step 1 : Setting the type of courses</a></h3>
+            <h3><i class="icon-chevron-right"></i><a href="#ws_step_1" data-toggle="collapse">Etape 1 : Saisissez le type de plats</a></h3>
         </div><!--panel-heading-->
 
         <div class="panel-body collapse in" id="ws_step_1">
@@ -13,10 +14,9 @@
                 {/for}
             </div>
         </div><!--panel-body-->
-        <br/>
 
         <div class="panel-heading">
-            <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_step_2" data-toggle="collapse">Step 2 : Select the dates</a></h3>
+            <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_step_2" data-toggle="collapse">Etape 2 : sélectionnez les dates</a></h3>
         </div><!--panel-heading-->
 
         <div id="ws_step_2" class="panel-body collapse">
@@ -46,8 +46,8 @@
                     <label>Porkfree dish</label>
                     <input type="checkbox" name="menu[{$day|lower}][{$i}][pork]" value="1"  />
                     <select class="allergenes" name="menu[{$day|lower}][{$i}][allergene][]" multiple>
-                        {foreach from=$allergies item=allergene}
-                            <option value="{$allergene}">{$allergene}</option>
+                        {foreach from=$allergs item=allerg}
+                            <option value="{$allerg}">{$allerg}</option>
                         {/foreach}
                     </select>
                 </div>
@@ -66,13 +66,13 @@
 {*Preview*}
 
 <section class="panel">
-    <div class="panel-header">
+    <div class="panel-heading">
         <h3><i class="icon-desktop"></i>&nbsp;Prévisualisation en direct</h3>
     </div>
-    <div class="alert alert-info">
+    {* <div class="alert alert-info">
         <p>Attention : le résultat de la prévisualisation ne sera visible qu'aprés avoir envoyé le formulaire ci-dessus.</p>
-        <p>Des différences mineures peuvent apparaitre entre la prévisualisation et le rendu sur la page d'accueil : c'est à cause du style chargé dans le back-office</p>
-    </div>
+        <p>Des différences mineures, notamment sur les polices et leurs tailles, peuvent apparaitre entre la prévisualisation et le rendu sur la page d'accueil : c'est à cause du style chargé dans le back-office</p>
+    </div> *}
     <div id="preview" class="panel-body">
         {include file="$path"}
     </div>

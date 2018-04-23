@@ -17,7 +17,7 @@
                 <th scope="row">{$day|upper}</th>
                 {foreach from=$menu.$i item=course}
                 <td class="table_render">
-                    {$course.name}<br/>
+                    <p>{$course.name}</p><br/>
                     {if isset($course.vg)&&($course.vg eq 1)}
                         <img src="..." alt="..." title="Plat végétarien" />
                     {/if}
@@ -25,7 +25,7 @@
                         <img src="..." alt="..." title="Plat sans porc" />
                     {/if}
                     {if isset($course.allergene)&&!empty($course.allergene)}
-                        <p class="pull-right" title="Contient des {foreach from=$course.allergene item=allergene}{$allergene} {/foreach} "><small>Informations allergènes</small></p>
+                        <p title="Contient des {foreach from=$course.allergene item=allergene}{$allergene} {/foreach} "><small>Informations allergènes</small></p>
                     {/if}
                 </td>
                 {/foreach}
