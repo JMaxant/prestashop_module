@@ -4,13 +4,12 @@ require_once(dirname(__FILE__).'/classes/WeekSpecial.php');
 
 class WeekSpecials extends Module
 {
-    // $this->context->smarty->register_function('stripAccents', array('WeekSpecials','stripAccents'));
-    // constructeur
+    // Construct
     public function __construct()
     {
         $this->name='weekspecials';
         $this->tab='front_office_features';
-        $this->version='0.1.0';
+        $this->version='1.0.0';
         $this->author='Julien Maxant & Sarah Gilbert';
         $this->path=__FILE__;
 
@@ -66,11 +65,18 @@ class WeekSpecials extends Module
             return false;
         }
         
+        // For some reasons, I had to call directly the defaultConfiguration() method, testing it with !$this->defaultConfiguration() would return a warning on install, although installation worked fine
+        $this->defaultConfiguration();
+
+        return true;
+    }
+
+    // Sets a default configuration, which is used at install and in the back office
+    public function defaultConfiguration(){
         $allergens=serialize(array('Gluten', 'Crustacés', 'Oeufs','Poisson','Arachides','Soja','Lait','Fruits à coque','Céleri','Moutarde','Sésame','Sulfites','Lupin','Mollusques'));
         Configuration::updateValue('WEEKS_DISHES','3');
         Configuration::updateValue('WEEKS_TEMPLATE','0');
         Configuration::updateValue('WEEKS_ALLERG',$allergens);
-        return true;
     }
     
     // Uninstall
@@ -93,7 +99,7 @@ class WeekSpecials extends Module
     
     public function loadSQLFile($sql_file)
     {
-        //get contents of the SQL File
+        // Gets contents of the SQL File
         $sql_content=file_get_contents($sql_file);
 
         // Replaces PREFIX with proper PS db prefix, and stores the queries in an array
@@ -113,10 +119,12 @@ class WeekSpecials extends Module
     public function hookActionDispatcher()
     {
         /*
-         * Register the plugin everytime a controller is instantiated 
+         * Registers the plugin everytime a controller is instantiated 
          */
+
         $this->context->smarty->registerPlugin('modifier','stripAccents', array('customSmarty', 'remove_accents'));
     }
+
     // Displays Hooks via controllers
     public function getHookController($hook_name)
     {
@@ -161,5 +169,3 @@ class WeekSpecials extends Module
         return $ret;
     }    
 }
-
-?>

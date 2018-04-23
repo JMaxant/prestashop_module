@@ -28,22 +28,18 @@ class WeekSpecialsGetContentController
         }
     }
         
-    public function defaultConfiguration()
+    public function resetConfiguration()
     {
         if(Tools::isSubmit('submit_weekspecial_default'))
         {
-            $allergens=serialize(array('Gluten', 'Crustacés', 'Oeufs','Poisson','Arachides','Soja','Lait','Fruits à coque','Céleri','Moutarde','Sésame','Sulfites','Lupin','Mollusques'));
-            $nb_dishes=3;
-            Configuration::updateValue('WEEKS_DISHES', $nb_dishes);
-            Configuration::updateValue('WEEKS_ALLERG', $allergens);
-            $this->context->smarty->assign('reset','true');
+            $this->module->defaultConfiguration();
         }
     }
 
         // Affichage back
     public function run()
     { 
-        $this->defaultConfiguration();
+        $this->resetConfiguration();
         $this->processConfiguration();
         $html_form=$this->renderForm();
         $this->context->smarty->assign('config',$html_form);
