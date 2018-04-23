@@ -37,7 +37,7 @@ class WeekSpecialsDisplayHomeTabController
         $this->context->smarty->assign('dates',$formatDates);
         $this->context->smarty->assign('menu', $menu);
         $this->context->smarty->assign('courses',$courses);
-        $ws_days=array('Lundi','Mardi','Mercredi','Jeudi','Vendredi'); //FIXME:
+        $ws_days=$this->module->days;
         $this->context->smarty->assign('ws_days',$ws_days);
     }
     public function run()
@@ -45,6 +45,7 @@ class WeekSpecialsDisplayHomeTabController
        
         $this->setMedia();
         $this->assignTemplate();
+
         return $this->module->display($this->file, 'displayHomeTab.tpl');
     }
     

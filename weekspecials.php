@@ -4,6 +4,8 @@ require_once(dirname(__FILE__).'/classes/WeekSpecial.php');
 
 class WeekSpecials extends Module
 {
+    public $days=array('Lundi', 'Mardi','Mercredi','Jeudi','Vendredi');
+    
     // Construct
     public function __construct()
     {
@@ -33,6 +35,7 @@ class WeekSpecials extends Module
         $tab->class_name=$class_name;
         $tab->module=$this->name;
         $tab->active=1;
+        
         return $tab->add();
     }
 

@@ -45,7 +45,7 @@ class WeekSpecialsGetContentController
         $this->context->smarty->assign('config',$html_form);
         $enable_template=Configuration::get('WEEKS_TEMPLATE');
         $this->context->smarty->assign('enable_template', $enable_template);
-            
+
         return $this->module->display($this->file, 'getContent.tpl');
     }
 

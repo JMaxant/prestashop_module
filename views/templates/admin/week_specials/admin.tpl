@@ -33,7 +33,7 @@
             <h3><i class="icon-chevron-right"></i>&nbsp;<a href="#ws_step_3" data-toggle="collapse">Etape 3 : Saisissez le nom et les détails des plats</a></h3>
         </div><!--panel-heading-->
         <div id="ws_step_3" class="panel-body collapse">
-            {foreach from=$days item=day name=day}
+            {foreach from=$ws_days item=day name=day}
             <br/>
             <h3><a href="#{$day}" data-toggle="collapse">{$day} <span class="icon-arrow-down"></span></a></h3>
             <div id="{$day}" class="form-group collapse {if $smarty.foreach.day.first}in{/if}">
