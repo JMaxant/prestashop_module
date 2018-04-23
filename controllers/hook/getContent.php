@@ -16,7 +16,6 @@ class WeekSpecialsGetContentController
         if(Tools::isSubmit('submit_weekspecials_config'))
         {
             $allergens=unserialize(Configuration::get('WEEKS_ALLERG'));
-            $enable_front=Tools::getValue('enable_front');
             $enable_template=Tools::getValue('template');
             $nb_dishes=Tools::getValue('dishes');
             $allergens[]=Tools::getValue('allergens');

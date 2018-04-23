@@ -30,7 +30,6 @@ class AdminWeekSpecialsController extends ModuleAdminController
     {
         parent::initContent();
         
-        $tpl_edit=Configuration::get('WEEKS_TEMPLATE');
         $nb_dishes=Configuration::get('WEEKS_DISHES');
         $allergs=unserialize(Configuration::get('WEEKS_ALLERG'));
         $ws_days=$this->module->days;

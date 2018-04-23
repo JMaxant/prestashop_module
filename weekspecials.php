@@ -68,7 +68,7 @@ class WeekSpecials extends Module
             return false;
         }
         
-        // For some reasons, I had to call directly the defaultConfiguration() method, testing it with !$this->defaultConfiguration() would return a warning on install, although installation worked fine
+        // For some reasons, I had to call directly the defaultConfiguration() method, using it with !$this->defaultConfiguration() would return a warning on install, although installation worked fine
         $this->defaultConfiguration();
 
         return true;
