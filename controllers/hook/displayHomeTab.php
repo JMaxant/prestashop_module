@@ -12,10 +12,11 @@ class WeekSpecialsDisplayHomeTabController
 
     public function setMedia()
     {
-        $this->path=__PS_BASE_URI__.'modules/weekspecials/';
-        $this->context->controller->addCSS($this->path.'views/css/styles.css','all');
-        $this->context->controller->addJS($this->path.'views/js/app.js');
+        $dirPath=__PS_BASE_URI__.'modules/weekspecials/';
+        $this->context->controller->addCSS($dirPath.'views/css/styles.css','all');
+        $this->context->controller->addJS($dirPath.'views/js/app.js');
     }    
+
     // affichage hook displayHomeTab
     public function assignTemplate() //FIXME:
     {
@@ -26,8 +27,6 @@ class WeekSpecialsDisplayHomeTabController
         foreach($args as $arg){
             if($arg=='date'){
                 $dates=$output[$arg];
-                // var_dump($dates);
-                // die;
                 if(!empty($dates[0])&&!empty($dates[1])){
                     foreach($dates as $date){
                         $date=explode('-',$date);
@@ -38,12 +37,15 @@ class WeekSpecialsDisplayHomeTabController
                 $menu[]=$output[$arg];
             }
         }
+        
+        $ws_days=$this->module->days;
+
         $this->context->smarty->assign('dates',$formatDates);
         $this->context->smarty->assign('menu', $menu);
         $this->context->smarty->assign('courses',$courses);
-        $ws_days=$this->module->days;
         $this->context->smarty->assign('ws_days',$ws_days);
     }
+
     public function run()
     {   
        
